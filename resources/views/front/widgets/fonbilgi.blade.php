@@ -1,42 +1,258 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <div>
-            <h1 class="h2 mb-0 text-gray-800">IBP(Fon Adı)</h1>
+    <!-- Ay Gün Butonları -->
+    
+    {{-- <div class="col-sm-6">
+        <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
+          <label class="btn btn-sm btn-primary btn-simple active" id="0">
+            <input type="radio" name="options" checked>
+            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">7G</span>
+            <span class="d-block d-sm-none">
+              <i class="tim-icons icon-single-02"></i>
+            </span>
+          </label>
+          <label class="btn btn-sm btn-primary btn-simple" id="1">
+            <input type="radio" class="d-none d-sm-none" name="options">
+            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1A</span>
+            <span class="d-block d-sm-none">
+              <i class="tim-icons icon-gift-2"></i>
+            </span>
+          </label>
+          <label class="btn btn-sm btn-primary btn-simple" id="2">
+            <input type="radio" class="d-none" name="options">
+            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3A</span>
+            <span class="d-block d-sm-none">
+              <i class="tim-icons icon-tap-02"></i>
+            </span>
+          </label>
+          <label class="btn btn-sm btn-primary btn-simple" id="2">
+            <input type="radio" class="d-none" name="options">
+            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1Y</span>
+            <span class="d-block d-sm-none">
+              <i class="tim-icons icon-tap-02"></i>
+            </span>
+          </label>
+          <label class="btn btn-sm btn-primary btn-simple" id="2">
+            <input type="radio" class="d-none" name="options">
+            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3Y</span>
+            <span class="d-block d-sm-none">
+              <i class="tim-icons icon-tap-02"></i>
+            </span>
+          </label>
         </div>
-        <div class="d-flex gap-4 align-items-center">
-            <div>
-                <div class="text-foreground-03 text-sm">10 Ekim 2024</div>
-                <div class="text-2xl font-semibold">
-                    <span class="inline-flex items-center tabular-nums">0,567620</span>
+    </div> --}}
+
+    <!-- Area Chart -->
+    <div class="row">
+        <div class="col-xl-9 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div class="col-sm-6">
+                        <div class="btn-group btn-group-toggle float-left" data-toggle="buttons" id="button-group">
+                            <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                                <input type="radio" name="options" checked>
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">7G</span>
+                                <span class="d-block d-sm-none">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </span>
+                            </label>
+                            <label class="btn btn-sm btn-primary btn-simple" id="1">
+                                <input type="radio" name="options">
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1A</span>
+                                <span class="d-block d-sm-none">
+                                    <i class="tim-icons icon-gift-2"></i>
+                                </span>
+                            </label>
+                            <label class="btn btn-sm btn-primary btn-simple" id="2">
+                                <input type="radio" name="options">
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3A</span>
+                                <span class="d-block d-sm-none">
+                                    <i class="tim-icons icon-tap-02"></i>
+                                </span>
+                            </label>
+                            <label class="btn btn-sm btn-primary btn-simple" id="3">
+                                <input type="radio" name="options">
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1Y</span>
+                                <span class="d-block d-sm-none">
+                                    <i class="tim-icons icon-tap-02"></i>
+                                </span>
+                            </label>
+                            <label class="btn btn-sm btn-primary btn-simple" id="4">
+                                <input type="radio" name="options">
+                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3Y</span>
+                                <span class="d-block d-sm-none">
+                                    <i class="tim-icons icon-tap-02"></i>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="myAreaChart"></canvas>
+                    </div>
                 </div>
             </div>
-    
-            <!-- Dikey çizgi -->
-            <div style="border-left: 2px solid #5a5c69; height: 50px; margin: 0 15px;"></div>
-    
-            <div>
-                <div class="text-foreground-03 text-sm">1 Aylık Getiri</div>
-                <div class="text-2xl font-semibold">
-                    <span class="inline-flex items-center tabular-nums">%-5,98</span>
+        </div>
+        <div class="col-xl-3 col-lg-5">
+            <!-- Approach -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Fon Bilgileri</h6>
                 </div>
-            </div>
-    
-            <!-- Dikey çizgi -->
-            <div style="border-left: 2px solid #5a5c69; height: 50px; margin: 0 15px;"></div>
-    
-            <div>
-                <div class="text-foreground-03 text-sm">3 Aylık Getiri</div>
-                <div class="text-2xl font-semibold">
-                    <span class="inline-flex items-center tabular-nums">%-5,98</span>
+                <div class="card-body">
+                    <p>{{ \Illuminate\Support\Str::limit($fon->description, 100, '...') }}</p>
+                    <p class="mb-0">Fon Kodu: {{$fon->code}}</p>
+                    <hr>
+                    <p class="mb-0">Kurucu: {{$fon->author}}</p>
+                    <hr>
+                    <p class="mb-0">Yıllık Yönetim Ücreti: dummydata</p>
+                    <hr>
+                    <p class="mb-0">Risk Değeri: dummy data</p>
+                    <hr>
+                    <p class="mb-0">Alış Valörü: dummydata</p>
+                    <hr>
+                    <p class="mb-0">Satış Valörü: dummydata</p>
                 </div>
             </div>
         </div>
     </div>
-    
-    <h2 class="h5 mb-0 text-gray-600">Birinci Değişken Fon(Fon Açıklama)</h2>
+
+    <!-- Bar Chart -->
+    <div class="row">
+        <div class="col-xl-3 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Fon Toplam Değer</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="myBarChart"></canvas>
+                    </div>
+                    <hr>
+                    Styling for the bar chart can be found in the
+                    <code>/js/demo/chart-bar-demo.js</code> file.
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Yatırımcı Sayısı</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="myBarChart"></canvas>
+                    </div>
+                    <hr>
+                    Styling for the bar chart can be found in the
+                    <code>/js/demo/chart-bar-demo.js</code> file.
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Dolaşımdaki Pay Adedi</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-bar">
+                        <canvas id="myBarChart"></canvas>
+                    </div>
+                    <hr>
+                    Styling for the bar chart can be found in the
+                    <code>/js/demo/chart-bar-demo.js</code> file.
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Hacim Bilgileri</h6>
+                </div>
+                <div class="card-body">
+                    
+                    <p class="mb-0">Toplam Adet: dummydata</p>
+                    <hr>
+                    <p class="mb-0">Aktif Adet: dummydata</p>
+                    <hr>
+                    <p class="mb-0">Doluluk Oranı: dummydata</p>
+                    <hr>
+                    <p class="mb-0">Pazar Payı: dummy data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-9 ">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                </div>
+                <div class="card-body">
+                    <h4 class="small font-weight-bold">Hisse Senedi (%64,56) <span class="float-right">20%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Yatırım Fonları Katılma Payları (%14,26)
+                        <span class="float-right">40%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">
+                        Yabancı Hisse Senedi (%13,52) <span class="float-right">60%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Vadeli İşlemler Nakit Teminatları (%2,90) <span class="float-right">80%</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Girişim S. YF Kat. Payları (%2,76) <span class="float-right">Complete!</span></h4>
+                    <div class="progress mb-4">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold">Kalanlar (%2,00) <span class="float-right">Complete!</span></h4>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Hacim Bilgileri</h6>
+                </div>
+                <div class="card-body">
+                    
+                    <p class="mb-0">Toplam Adet: dummydata</p>
+                    <hr>
+                    <p class="mb-0">Aktif Adet: dummydata</p>
+                    <hr>
+                    <p class="mb-0">Doluluk Oranı: dummydata</p>
+                    <hr>
+                    <p class="mb-0">Pazar Payı: dummy data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Page Heading -->
+    {{-- 
 
     
     <!-- Content Row -->
@@ -362,3 +578,21 @@
 
 </div>
 <!-- End of Main Content -->
+<script>
+    const btnGroup = document.getElementById('button-group');
+    const buttons = btnGroup.getElementsByClassName('btn');
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function() {
+            const current = document.getElementsByClassName('active');
+            
+            // Remove the 'active' class from all buttons
+            if (current.length > 0) {
+                current[0].classList.remove('active');
+            }
+
+            // Add the 'active' class to the clicked button
+            this.classList.add('active');
+        });
+    }
+</script>
