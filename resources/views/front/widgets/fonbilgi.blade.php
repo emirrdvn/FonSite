@@ -2,12 +2,43 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <div>
+            <h1 class="h2 mb-0 text-gray-800">IBP(Fon Adı)</h1>
+        </div>
+        <div class="d-flex gap-4 align-items-center">
+            <div>
+                <div class="text-foreground-03 text-sm">10 Ekim 2024</div>
+                <div class="text-2xl font-semibold">
+                    <span class="inline-flex items-center tabular-nums">0,567620</span>
+                </div>
+            </div>
+    
+            <!-- Dikey çizgi -->
+            <div style="border-left: 2px solid #5a5c69; height: 50px; margin: 0 15px;"></div>
+    
+            <div>
+                <div class="text-foreground-03 text-sm">1 Aylık Getiri</div>
+                <div class="text-2xl font-semibold">
+                    <span class="inline-flex items-center tabular-nums">%-5,98</span>
+                </div>
+            </div>
+    
+            <!-- Dikey çizgi -->
+            <div style="border-left: 2px solid #5a5c69; height: 50px; margin: 0 15px;"></div>
+    
+            <div>
+                <div class="text-foreground-03 text-sm">3 Aylık Getiri</div>
+                <div class="text-2xl font-semibold">
+                    <span class="inline-flex items-center tabular-nums">%-5,98</span>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <h2 class="h5 mb-0 text-gray-600">Birinci Değişken Fon(Fon Açıklama)</h2>
 
+    
     <!-- Content Row -->
     <div class="row">
 
@@ -324,7 +355,7 @@
             </div>
 
         </div>
-    </div>
+    </div>--}}
 
 </div>
 <!-- /.container-fluid -->
