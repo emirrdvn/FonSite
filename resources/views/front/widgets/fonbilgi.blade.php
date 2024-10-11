@@ -186,6 +186,8 @@
             </div>
         </div>
     </div>
+
+
     <div class="row">
         <div class="col-xl-9 ">
             <div class="card shadow mb-4">
@@ -225,17 +227,23 @@
         <div class="col-xl-3 col-lg-5">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Hacim Bilgileri</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Getiri Bilgileri</h6>
                 </div>
                 <div class="card-body">
                     
-                    <p class="mb-0">Toplam Adet: dummydata</p>
+                    <p class="mb-0">1 Ay: dummydata</p>
                     <hr>
-                    <p class="mb-0">Aktif Adet: dummydata</p>
+                    <p class="mb-0">3 Ay: dummydata</p>
                     <hr>
-                    <p class="mb-0">Doluluk Oranı: dummydata</p>
+                    <p class="mb-0">6 Ay: dummydata</p>
                     <hr>
-                    <p class="mb-0">Pazar Payı: dummy data</p>
+                    <p class="mb-0">YTD: dummy data</p>
+                    <hr>
+                    <p class="mb-0">1 Yıl: dummy data</p>
+                    <hr>
+                    <p class="mb-0">3 Yıl: dummy data</p>
+                    <hr>
+                    <p class="mb-0">5 Yıl: dummy data</p>
                 </div>
             </div>
         </div>
