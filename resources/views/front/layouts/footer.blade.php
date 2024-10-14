@@ -56,7 +56,9 @@ aria-hidden="true">
 <script src="{{asset('back/')}}/js/demo/chart-area-demo.js"></script>
 <script src="{{asset('back/')}}/js/demo/chart-pie-demo.js"></script>
 <script src="{{asset('back/')}}/js/demo/chart-bar-demo.js"></script>
+{!! $chartweekly->script() !!}
 {!! $chartyearly->script() !!}
+{!! $chartmonthly->script() !!}
 </body>
 
 </html>

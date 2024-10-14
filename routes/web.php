@@ -7,6 +7,7 @@ use Inertia\Inertia;
 
 Route::get('/fon/{code}',[App\Http\Controllers\FonController::class,'index'])->name('fon');
 
+
 /*Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

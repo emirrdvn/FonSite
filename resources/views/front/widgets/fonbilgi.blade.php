@@ -2,103 +2,100 @@
 <div class="container-fluid">
     <!-- Ay Gün Butonları -->
     
-    {{-- <div class="col-sm-6">
-        <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
-          <label class="btn btn-sm btn-primary btn-simple active" id="0">
-            <input type="radio" name="options" checked>
-            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">7G</span>
-            <span class="d-block d-sm-none">
-              <i class="tim-icons icon-single-02"></i>
-            </span>
-          </label>
-          <label class="btn btn-sm btn-primary btn-simple" id="1">
-            <input type="radio" class="d-none d-sm-none" name="options">
-            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1A</span>
-            <span class="d-block d-sm-none">
-              <i class="tim-icons icon-gift-2"></i>
-            </span>
-          </label>
-          <label class="btn btn-sm btn-primary btn-simple" id="2">
-            <input type="radio" class="d-none" name="options">
-            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3A</span>
-            <span class="d-block d-sm-none">
-              <i class="tim-icons icon-tap-02"></i>
-            </span>
-          </label>
-          <label class="btn btn-sm btn-primary btn-simple" id="2">
-            <input type="radio" class="d-none" name="options">
-            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1Y</span>
-            <span class="d-block d-sm-none">
-              <i class="tim-icons icon-tap-02"></i>
-            </span>
-          </label>
-          <label class="btn btn-sm btn-primary btn-simple" id="2">
-            <input type="radio" class="d-none" name="options">
-            <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3Y</span>
-            <span class="d-block d-sm-none">
-              <i class="tim-icons icon-tap-02"></i>
-            </span>
-          </label>
-        </div>
-    </div> --}}
+    <?php
+    // use Illuminate\Support\Facades\DB;
+    
+    // $fonprices = array();
+    
+    // DB::table('fonprices')->where('fon_id', $fon->id)
+    //     ->orderBy('date', 'desc')
+    //     ->get()->each(function ($item) use (&$fonprices) {
+    //         array_push($fonprices, $item);
+    //     });
+    
+    // $dataforchart = json_encode($fonprices);
+    // echo "<script>var dataforchart = $dataforchart;</script>";
+    ?>
 
-    <!-- Area Chart -->
+    <!-- CHART AREA -->
     <div class="row">
+        {{-- <div class="col-sm-6">
+            <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
+                <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                    <input id="radio0" type="radio" name="options" checked>
+                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">7G</span>
+                    <span class="d-block d-sm-none">
+                        <i class="tim-icons icon-single-02"></i>
+                    </span>
+                </label>
+                <label class="btn btn-sm btn-primary btn-simple" id="1">
+                    <input id="radio1" type="radio" class="d-none d-sm-none" name="options">
+                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1A</span>
+                    <span class="d-block d-sm-none">
+                        <i class="tim-icons icon-gift-2"></i>
+                    </span>
+                </label>
+                <label class="btn btn-sm btn-primary btn-simple" id="2">
+                    <input id="radio2" type="radio" class="d-none" name="options">
+                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3A</span>
+                    <span class="d-block d-sm-none">
+                        <i class="tim-icons icon-tap-02"></i>
+                    </span>
+                </label>
+                <label class="btn btn-sm btn-primary btn-simple" id="3">
+                    <input id="radio3" type="radio" class="d-none" name="options">
+                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1Y</span>
+                    <span class="d-block d-sm-none">
+                        <i class="tim-icons icon-tap-02"></i>
+                    </span>
+                </label>
+                <label class="btn btn-sm btn-primary btn-simple" id="4">
+                    <input id="radio4" type="radio" class="d-none" name="options">
+                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3Y</span>
+                    <span class="d-block d-sm-none">
+                        <i class="tim-icons icon-tap-02"></i>
+                    </span>
+                </label>
+            </div>
+        </div> --}}
+        
         <div class="col-xl-9 col-lg-7">
-            {!! $chartyearly->container() !!}
-
-            {{-- <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <div class="col-sm-6">
-                        <div class="btn-group btn-group-toggle float-left" data-toggle="buttons" id="button-group">
-                            <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                                <input type="radio" name="options" checked>
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">7G</span>
-                                <span class="d-block d-sm-none">
-                                    <i class="tim-icons icon-single-02"></i>
-                                </span>
-                            </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="1">
-                                <input type="radio" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1A</span>
-                                <span class="d-block d-sm-none">
-                                    <i class="tim-icons icon-gift-2"></i>
-                                </span>
-                            </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="2">
-                                <input type="radio" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3A</span>
-                                <span class="d-block d-sm-none">
-                                    <i class="tim-icons icon-tap-02"></i>
-                                </span>
-                            </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="3">
-                                <input type="radio" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1Y</span>
-                                <span class="d-block d-sm-none">
-                                    <i class="tim-icons icon-tap-02"></i>
-                                </span>
-                            </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="4">
-                                <input type="radio" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3Y</span>
-                                <span class="d-block d-sm-none">
-                                    <i class="tim-icons icon-tap-02"></i>
-                                </span>
-                            </label>
-                        </div>
-                    </div>
+            
+            <!-- Tab links -->
+                <div class="tab">
+                    <button class="tablinks btn btn-dark" onclick="openCity(event, '7G')">7G</button>
+                    <button class="tablinks btn btn-dark" onclick="openCity(event, '1A')">1A</button>
+                    <button class="tablinks btn btn-dark" onclick="openCity(event, '3A')">3A</button>
+                    <button class="tablinks btn btn-dark" onclick="openCity(event, '1Y')">1Y</button>
+                    <button class="tablinks btn btn-dark" onclick="openCity(event, '3Y')">3Y</button>
                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
-                    </div>
+                
+                <!-- Tab content -->
+                <div id="7G" class="tabcontent">
+                    <div class="chart-container">{!! $chartweekly->container() !!}</div>
                 </div>
-            </div> --}}
+                
+                <div id="1A" class="tabcontent">
+                    <div class="chart-container">{!! $chartmonthly->container() !!}</div>
+                </div>
+                
+                <div id="3A" class="tabcontent">
+                    
+                    <p>Tokyo is the capital of Japan.</p>
+                </div>
+                <div id="1Y" class="tabcontent">
+                    <div class="chart-container">{!! $chartyearly->container() !!}</div>
+                    
+                </div>
+                <div id="3Y" class="tabcontent">
+                    
+                    <p>Africa is the capital of Japan.</p>
+                </div>
+                
         </div>
+        
+        
+        {{-- FON BİLGİLERİ --}}
         <div class="col-xl-3 col-lg-5">
             <!-- Approach -->
             <div class="card shadow mb-4">
@@ -588,7 +585,7 @@
 
 </div>
 <!-- End of Main Content -->
-<script>
+{{-- <script>
     const btnGroup = document.getElementById('button-group');
     const buttons = btnGroup.getElementsByClassName('btn');
 
@@ -603,6 +600,49 @@
 
             // Add the 'active' class to the clicked button
             this.classList.add('active');
+            
         });
     }
+</script> --}}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Buton grubundaki butonlara tıklama olayı ekle
+        $('#button-group .btn').click(function() {
+            // Tıklanan butonun ID'sini al (grafik türünü belirtmek için)
+            var chartType = $(this).attr('id');
+
+            // Önce mevcut aktif durumu kaldır, sonra tıklanan butonu aktif yap
+            $('#button-group .btn').removeClass('active');
+            $(this).addClass('active');
+
+            
+        });
+    });
+</script>
+<script>
+    function openCity(evt, cityName) {
+    // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
 </script>
