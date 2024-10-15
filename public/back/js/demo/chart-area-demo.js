@@ -30,73 +30,48 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 // Area Chart Example
 
 var period = 0;
-var days= ['pazartesi', 'salı', 'çarşamba', 'perşembe', 'cuma', 'cumartesi', 'pazar'];
-var neededData = dataforchart;
+
+var neededData = dataforchart.slice(0, 7);
 var neededPrices = [];
-var Labels = [];
-var daysofmonth=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
-var daysofthreemonth=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
-  31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,
-  65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90];
-var daysofyear=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,
-  31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,
-  65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,
-  101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,
-  131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,
-  161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,
-  191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,
-  221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,
-  251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,
-  281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,
-  311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,
-  341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365];
-var myLineChart = document.getElementById("myAreaChart").getContext("2d");
+var neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+
 document.getElementsByName('options').forEach(function(radio) {
   radio.addEventListener('click', function() {
     period = parseInt(radio.id.slice(-1));
     switch (period) {
       case 0:
         neededData = dataforchart.slice(0, 7);
-        Labels=days;
-        console.log(neededData);
+        neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
         break;
       case 1:
         neededData = dataforchart.slice(0, 30);
-        Labels=daysofmonth;
-        console.log(neededData);
+        neededLabels = Array.from({ length: 30 }, (_, i) => i + 1);
         break;
       case 2:
         neededData = dataforchart.slice(0, 30*3);
-        Labels=daysofthreemonth;
-        console.log(neededData);
+        neededLabels = Array.from({ length: 30*3 }, (_, i) => i + 1);
         break;
       case 3:
         neededData = dataforchart.slice(0, 365);
-        Labels=daysofyear;
-        console.log(neededData);
+        neededLabels = Array.from({ length: 365 }, (_, i) => i + 1);
         break;
       case 4:
         neededData = dataforchart.slice(0, 365*3);
-        console.log(neededData);
+        neededLabels = Array.from({ length: 365*3 }, (_, i) => i + 1);
+
         break;
       default:
         neededData = dataforchart.slice(0, 7);;
-        console.log(neededData);
+        neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
         break;
     }
-  
-    newChart(neededDataToNeededPrices(neededData), Labels);
+
+    newChart(neededDataToNeededPrices(neededData), neededLabels);
   }
-  
 )});
 
-if(window.bar != undefined)
-  window.bar.destroy();
-window.bar = newChart(neededDataToNeededPrices(neededData), Labels);
-
-
 setTimeout(() => {
-  newChart(neededDataToNeededPrices(neededData),Labels);
+  newChart(neededDataToNeededPrices(neededData), neededLabels);
 }, 100);
 
 function neededDataToNeededPrices(neededData) {
@@ -105,27 +80,31 @@ function neededDataToNeededPrices(neededData) {
     neededPrices.push(data.price);
   });
 
-  return neededPrices;
+  return neededPrices.reverse();
 }
 
-async function newChart(useThisData, useThisLabels) {
+let myLineChart;
 
-  var myLineChart = await new Chart(document.getElementById("myAreaChart"), {
+async function newChart(useThisData, LabelData) {
+  if (myLineChart)
+    myLineChart.destroy();
+
+  myLineChart = await new Chart(document.getElementById("myAreaChart") , {
     type: 'line',
     data: {
-      labels: useThisLabels,
+      labels: LabelData,//["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       datasets: [{
-        label: "Earnings",
+        label: "Fiyat",
         lineTension: 0.3,
-        backgroundColor: "rgba(78, 115, 223, 0.05)",
-        borderColor: "rgba(78, 115, 223, 1)",
+        backgroundColor: "rgba(0, 0, 0, 0.07)",
+        borderColor: "rgba(0, 0, 0, 1)",
         pointRadius: 3,
-        pointBackgroundColor: "rgba(78, 115, 223, 1)",
-        pointBorderColor: "rgba(78, 115, 223, 1)",
+        pointBackgroundColor: "rgba(0, 0, 0, 1)",
+        pointBorderColor: "rgba(0, 0, 0, 1)",
         pointHoverRadius: 3,
-        pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-        pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-        pointHitRadius: 10,
+        pointHoverBackgroundColor: "rgba(255, 255, 255, 1)",
+        pointHoverBorderColor: "rgba(255, 255, 255, 0.5)",
+        pointHitRadius: 5,
         pointBorderWidth: 2,
         data: useThisData,
       }],
@@ -150,7 +129,7 @@ async function newChart(useThisData, useThisLabels) {
             drawBorder: false
           },
           ticks: {
-            maxTicksLimit: 7
+            maxTicksLimit: 30
           }
         }],
         yAxes: [{

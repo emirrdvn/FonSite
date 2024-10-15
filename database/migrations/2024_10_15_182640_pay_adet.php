@@ -11,19 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fonprices', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->unsignedBigInteger('fon_id')
+        if (!Schema::hasTable('payAdet'))
+            Schema::create('payAdet', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->unsignedBigInteger('fon_id')
                     ->foreign('fon_id')->references('id')->on('fons')
                     ->onDelete('cascade');
-            $table->float('price')->min(0);
-            $table->date('date');
-            $table->foreign('name')->references('code')->on('fons')->onDelete('cascade');
-    });
-
-
-
+                $table->bigInteger('payAdet')->min(0);
+                $table->date('date');
+            });
     }
 
     /**

@@ -1,71 +1,138 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use App\Models\Fon;
-use App\Models\fonpricesyearly;
-use App\Charts\FonPriceYearly;
-use App\Models\fonpricesweekly;
-use App\Models\fonpricesmonthly;
+use App\Models\fonprices;
+use Illuminate\Support\Facades\DB;
+use Attribute;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
+use DateTime;
 class FonController extends Controller
 {
     public function index($code){
         
         $fon = Fon::where('code', $code)->first();
-        $fonpriceyearly = fonpricesyearly::where('name', $code)->first();
-        $aylar = ['ocak', 'şubat', 'mart', 'nisan', 'mayıs', 'haziran', 'temmuz', 'ağustos', 'eylül', 'ekim', 'kasım', 'aralık'];
-        $days= ['pazartesi', 'salı', 'çarşamba', 'perşembe', 'cuma', 'cumartesi', 'pazar'];
-        foreach($aylar as $ay){
-            $data[] = $fonpriceyearly->$ay;
-        }
-        $chartyearly = new FonPriceYearly;
-        $chartyearly->labels($aylar);
-        $chartyearly->dataset('Fon Fiyatı', 'line', $data);
-        foreach($days as $day){
-            $data2[] = fonpricesweekly::where('name', $code)->first()->$day;
-        }
-        $chartweekly= new FonPriceYearly;
-        $chartweekly->labels($days);
-        $chartweekly->dataset('Fon Fiyatı', 'line', $data2);
 
-        $chartmonthly = new FonPriceYearly;
-        $chartmonthly->labels($arr= range(1, 30));
-        foreach($arr as $a){
-            $data3[] = fonpricesmonthly::where('name', $code)->first()->$a;
+        //FON PRICES DYNAMICLY
+        $fonprices = array();
+        
+        DB::table('fonprices')->where('fon_id', $fon->id)
+            ->orderBy('date', 'desc')
+            ->get()->each(function ($item) use (&$fonprices) {
+                array_push($fonprices, $item);
+            });
+        
+        $dataforchart= json_encode($fonprices);
+
+
+        //sonradan eklendi
+
+        $fonPriceLast = DB::table('fonprices')
+            ->where('fon_id', $fon->id)
+            ->orderByDesc('date')
+            ->first();
+        $fonPrice = $fonPriceLast->price;
+
+        $time = new DateTime($fonPriceLast->date);
+
+        $fonPayAdet = DB::table('payAdet')
+            ->where('fon_id', $fon->id)
+            ->orderByDesc('date')
+            ->first()
+            ->payAdet;
+
+        $fonYatirimciSayisi = DB::table('yatirimciSayisi')
+            ->where('fon_id', $fon->id)
+            ->orderByDesc('date')
+            ->first()
+            ->yatirimciSayisi;
+
+        $time = $time->format('Y-m-d');
+
+        function getFonPriceDiff($fon, $date, $diff, $fonPrice)
+        {
+            $fonPriceOld = DB::table('fonprices')
+                ->where('fon_id', $fon->id)
+                ->where(
+                    'date',
+                    (new DateTime($date))->modify($diff)->format('Y-m-d')
+                )
+                ->first()
+                ->price;
+
+            return number_format(($fonPrice - $fonPriceOld) / $fonPriceOld * 100, 2);
         }
-        $chartmonthly->dataset('Fon Fiyatı', 'line', $data3);
+
+        function getDataMonthly($fon, $date, $diff, $column)
+        {
+            return intval(
+                round(
+                    DB::table($column)
+                        ->where('fon_id', $fon->id)
+                        ->where(
+                            'date',
+                            '>',
+                            (new DateTime($date))->modify($diff)->format('Y-m-d')
+                        )
+                        ->where(
+                            'date',
+                            '<',
+                            (new DateTime($date))->modify($diff)->modify('+1 month')->format('Y-m-d')
+                        )
+                        ->avg($column)
+                )
+            );
+        }
+
+        $fonPayAdetMonthly = [];
+        $fonYatirimciSayisiMonthly = [];
+
+        for ($i = 6; $i > 0; $i--) {
+            array_push($fonPayAdetMonthly, getDataMonthly(
+                $fon,
+                $time,
+                '-' . $i . ' month',
+                'payAdet'
+            ));
+
+            array_push($fonYatirimciSayisiMonthly, getDataMonthly(
+                $fon,
+                $time,
+                '-' . $i . ' month',
+                'yatirimciSayisi'
+            ));
+        }
+
+        $fonPriceDiffs = [];
+
+        foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
+            $fonPriceDiffs[$diff] = getFonPriceDiff(
+                $fon,
+                $time,
+                '-' . substr($diff, 0, 1) . ' ' . strtolower(substr($diff, 1)),
+                $fonPrice
+            );
+        }
+
         
         
         
-        return view('front.homepage', compact('fon', 'fonpriceyearly', 'chartyearly', 'chartweekly', 'chartmonthly'));
+        return view('front.homepage', compact('fon',
+            'dataforchart',
+            'fonPrice',
+            'time',
+            'fonPayAdet',
+            'fonYatirimciSayisi',
+            'fonPriceDiffs',
+            'fonPayAdetMonthly',
+            'fonYatirimciSayisiMonthly'));
     }
 
 
 
-    // public function chart($code,$charttype){
-    //     // $type = $request->get('type');  // AJAX ile gelen 'type' parametresini al
-    //     $fon = Fon::where('code', $code)->first();
-    //     $fonpriceyearly = fonpricesyearly::where('name', $code)->first();
-    //     $aylar = ['ocak', 'şubat', 'mart', 'nisan', 'mayıs', 'haziran', 'temmuz', 'ağustos', 'eylül', 'ekim', 'kasım', 'aralık'];
-    //     $days= ['pazartesi', 'salı', 'çarşamba', 'perşembe', 'cuma', 'cumartesi', 'pazar'];
-    //     foreach($aylar as $ay){
-    //         $data[] = $fonpriceyearly->$ay;
-    //     }
-    //     $chartyearly = new FonPriceYearly;
-    //     $chartyearly->labels($aylar);
-    //     $chartyearly->dataset('Fon Fiyatı', 'line', $data);
-    //     foreach($days as $day){
-    //         $data2[] = fonpricesweekly::where('name', $code)->first()->$day;
-    //     }
-    //     $chartweekly= new FonPriceYearly;
-    //     $chartweekly->labels($days);
-    //     $chartweekly->dataset('Fon Fiyatı', 'line', $data2);
-        
-        
-    //     return view('front.homepage', compact('fon', 'fonpriceyearly', 'chartyearly', 'chartweekly', 'charttype'));
-
-    // }
+    
 
 
 }
