@@ -48,7 +48,7 @@ class FonController extends Controller
             ->orderByDesc('date')
             ->first()
             ->yatirimciSayisi;
-
+        
         $time = $time->format('Y-m-d');
 
         function getFonPriceDiff($fon, $date, $diff, $fonPrice)
@@ -86,9 +86,9 @@ class FonController extends Controller
             );
         }
 
+        
         $fonPayAdetMonthly = [];
         $fonYatirimciSayisiMonthly = [];
-
         for ($i = 6; $i > 0; $i--) {
             array_push($fonPayAdetMonthly, getDataMonthly(
                 $fon,

@@ -35,10 +35,10 @@ var myBarChart = new Chart(ctx, {
     labels: ["January", "February", "March", "April", "May", "June"],
     datasets: [{
       label: "Revenue",
-      backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
+      backgroundColor: "#515151",
+      hoverBackgroundColor: "#090a09",
       borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [4222718443, 2222718443, 3222718443, 3522718443, 1222718443, 2922718443],
     }],
   },
   options: {
@@ -68,12 +68,12 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 5222718443,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return '₺' + number_format(value);
           }
         },
         gridLines: {

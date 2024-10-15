@@ -4,6 +4,7 @@
     
     <?php
     echo "<script>var dataforchart = $dataforchart;</script>";
+    
     ?>
 
     <!-- CHART AREA -->
@@ -159,19 +160,19 @@
                 <div class="card-body">
                     <div class="divide-y divide-stroke-01">
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                            <span class="text-foreground-03">Toplam Adet</span>
+                            <span class="text-foreground-03 text-dark">Toplam Adet:</span>
                             <span class="float-right text-foreground-02 truncate">18,75 mr</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                            <span class="text-foreground-03">Aktif Adet</span>
+                            <span class="text-foreground-03 text-dark">Aktif Adet:</span>
                             <span class="float-right text-foreground-02 truncate">7,68 mr</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                            <span class="text-foreground-03">Doluluk Oranı</span>
+                            <span class="text-foreground-03 text-dark">Doluluk Oranı:</span>
                             <span class="float-right text-foreground-02 truncate">%40,96</span>
                         </div>
                         <div class="flex justify-between items-center h-9 space-x-4 text-sm">
-                            <span class="text-foreground-03">Pazar Payı</span>
+                            <span class="text-foreground-03 text-dark">Pazar Payı:</span>
                             <span class="float-right text-foreground-02 truncate">%7,84</span>
                         </div>
                     </div>
@@ -187,7 +188,7 @@
             <div class="row ">
             <div class="col-3">
                 <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                    <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">En
+                    <div class="card-header text-dark font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">En
                         Büyük Pozisyonlar</div>
                     <div>
                         <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
@@ -268,7 +269,7 @@
             </div>
             <div class="col-3">
                 <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                    <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
+                    <div class="card-header text-dark font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
                         Zamanda Artırılanlar</div>
                     <div>
                         <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
@@ -349,7 +350,7 @@
             </div>
             <div class="col-3">
                 <div class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                    <div class="card-header text-primary font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
+                    <div class="card-header text-dark font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">Yakın
                         Zamanda Azaltılanlar</div>
                     <div>
                         <a class="h-[51px] block relative text-foreground-01 hover:bg-background-disabled"
