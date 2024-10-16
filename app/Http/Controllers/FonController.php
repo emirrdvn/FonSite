@@ -17,13 +17,11 @@ class FonController extends Controller
 
         //FON PRICES DYNAMICLY
         $fonprices = array();
-        
         DB::table('fonprices')->where('fon_id', $fon->id)
             ->orderBy('date', 'desc')
             ->get()->each(function ($item) use (&$fonprices) {
                 array_push($fonprices, $item);
             });
-        
         $dataforchart= json_encode($fonprices);
 
 
@@ -104,7 +102,7 @@ class FonController extends Controller
                 'yatirimciSayisi'
             ));
         }
-
+        
         $fonPriceDiffs = [];
 
         foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
@@ -117,8 +115,8 @@ class FonController extends Controller
         }
 
         
-        
-        
+        $fonYatirimciSayisiMonthlyBarChart = json_encode($fonYatirimciSayisiMonthly);
+        $fonPayAdetMonthlyBarChart = json_encode($fonPayAdetMonthly);
         return view('front.homepage', compact('fon',
             'dataforchart',
             'fonPrice',
@@ -127,8 +125,10 @@ class FonController extends Controller
             'fonYatirimciSayisi',
             'fonPriceDiffs',
             'fonPayAdetMonthly',
-            'fonYatirimciSayisiMonthly'));
-    }
+            'fonYatirimciSayisiMonthly',
+            'fonYatirimciSayisiMonthlyBarChart',
+            'fonPayAdetMonthlyBarChart'));
+        }
 
 
 

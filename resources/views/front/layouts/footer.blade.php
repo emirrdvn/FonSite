@@ -55,7 +55,10 @@ aria-hidden="true">
 <!-- Page level custom scripts -->
 <script src="{{asset('back/')}}/js/demo/chart-area-demo.js"></script>
 <script src="{{asset('back/')}}/js/demo/chart-pie-demo.js"></script>
-<script src="{{asset('back/')}}/js/demo/chart-bar-demo.js"></script>
+<script src="{{asset('back/')}}/js/demo/fontoplamdeger-bar-chart.js"></script>
+<script src="{{asset('back/')}}/js/demo/yatirimci-bar-chart.js"></script>
+<script src="{{asset('back/')}}/js/demo/payadet-bar-chart.js"></script>
+<script src="{{asset('back/')}}/js/demo/binliranoldu-bar-chart.js"></script>
 
 
 </body>
