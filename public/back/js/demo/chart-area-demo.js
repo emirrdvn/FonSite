@@ -27,6 +27,70 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+//Gün Hesaplama
+function getLast7DaysLabels() {
+  const labels = [];
+  const today = new Date();
+  const daysOfWeek = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+
+  for (let i = 6; i >= 0; i--) {
+    const pastDate = new Date(today);
+    pastDate.setDate(today.getDate() - i);
+
+    // Haftanın gününün adını almak
+    const dayName = daysOfWeek[pastDate.getDay()];
+    labels.push(dayName);
+  }
+
+  return labels;
+}
+//3 Ay Hesaplama
+function getLast90Days() {
+  const daysArray = [];
+  const today = new Date();
+  const months = [
+    'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 
+    'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+  ];
+
+  for (let i = 0; i < 90; i++) {
+    const pastDate = new Date(today);
+    pastDate.setDate(today.getDate() - i);
+
+    // Gün, ay ve yıl formatında tarih oluştur
+    const day = pastDate.getDate();
+    const month = months[pastDate.getMonth()];
+    const year = pastDate.getFullYear();
+    
+    daysArray.push(`${day} ${month} ${year}`);
+  }
+
+  return daysArray.reverse();
+}
+function getLast30Days() {
+  const daysArray = [];
+  const today = new Date();
+  const months = [
+    'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 
+    'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+  ];
+
+  for (let i = 0; i < 30; i++) {
+    const pastDate = new Date(today);
+    pastDate.setDate(today.getDate() - i);
+
+    // Gün, ay ve yıl formatında tarih oluştur
+    const day = pastDate.getDate();
+    const month = months[pastDate.getMonth()];
+    
+    
+    daysArray.push(`${day} ${month}`);
+  }
+
+  return daysArray.reverse();
+}
+
+
 // Area Chart Example
 
 var period = 0;
@@ -41,15 +105,15 @@ document.getElementsByName('options').forEach(function(radio) {
     switch (period) {
       case 0:
         neededData = dataforchart.slice(0, 7);
-        neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+        neededLabels = getLast7DaysLabels() ;
         break;
       case 1:
         neededData = dataforchart.slice(0, 30);
-        neededLabels = Array.from({ length: 30 }, (_, i) => i + 1);
+        neededLabels = getLast30Days();
         break;
       case 2:
         neededData = dataforchart.slice(0, 30*3);
-        neededLabels = Array.from({ length: 30*3 }, (_, i) => i + 1);
+        neededLabels = getLast90Days();
         break;
       case 3:
         neededData = dataforchart.slice(0, 365);
@@ -62,7 +126,7 @@ document.getElementsByName('options').forEach(function(radio) {
         break;
       default:
         neededData = dataforchart.slice(0, 7);;
-        neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
+        neededLabels = getLast7DaysLabels() ;
         break;
     }
 
@@ -71,7 +135,7 @@ document.getElementsByName('options').forEach(function(radio) {
 )});
 
 setTimeout(() => {
-  newChart(neededDataToNeededPrices(neededData), neededLabels);
+  newChart(neededDataToNeededPrices(neededData), getLast7DaysLabels() );
 }, 100);
 
 function neededDataToNeededPrices(neededData) {

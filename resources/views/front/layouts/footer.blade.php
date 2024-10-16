@@ -59,6 +59,7 @@ aria-hidden="true">
 <script src="{{asset('back/')}}/js/demo/yatirimci-bar-chart.js"></script>
 <script src="{{asset('back/')}}/js/demo/payadet-bar-chart.js"></script>
 <script src="{{asset('back/')}}/js/demo/binliranoldu-bar-chart.js"></script>
+<script src="{{asset('back/')}}/js/demo/volalite-chart.js"></script>
 
 
 </body>

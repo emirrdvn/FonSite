@@ -26,15 +26,31 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
+//Ay Hesaplama
+function getLast6MonthsLabels() {
+  const labels = [];
+  const today = new Date();
+  const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 
+  for (let i = 5; i >= 0; i--) {
+    const pastDate = new Date(today);
+    pastDate.setMonth(today.getMonth() - i);
+
+    // Ayın adını almak
+    const monthName = months[pastDate.getMonth()];
+    labels.push(monthName);
+  }
+
+  return labels;
+}
 // Bar Chart Example
 var ctx = document.getElementById("FonToplamDegerBarChart");
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: getLast6MonthsLabels(),
     datasets: [{
-      label: "Revenue",
+      label: "Toplam Değer",
       backgroundColor: "#515151",
       hoverBackgroundColor: "#090a09",
       borderColor: "#4e73df",
@@ -103,7 +119,7 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ₺' + number_format(tooltipItem.yLabel);
         }
       }
     },
