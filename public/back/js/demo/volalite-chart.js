@@ -44,16 +44,7 @@ function getLast6MonthsLabels() {
   return labels;
 }
 
-var volalitedata=[];
-var volalitedata = neededDataToNeededPrices(dataforvolatility.slice(0, 7));
-function neededDataToNeededPrices(neededData) {
-  neededPrices = [];
-  neededData.forEach((data) => {
-      neededPrices.push(data);
-  });
 
-  return neededPrices;
-}
 console.log(volalitedata);
 // Bar Chart Example
 var ctx = document.getElementById("TarihselVolaliteChart");

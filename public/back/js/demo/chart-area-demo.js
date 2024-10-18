@@ -156,13 +156,17 @@ document.getElementsByName("options").forEach(function (radio) {
                 neededLabels = getLast7DaysLabels();
                 break;
         }
-
-        newChart(neededDataToNeededPrices(neededData), neededLabels);
+        if (myLineChart1) myLineChart1.destroy();
+        setTimeout(() => {
+            newChart(myLineChart1,neededDataToNeededPrices(neededData), neededLabels,document.getElementById("myAreaChart"));
+            
+        }, 100);
     });
 });
 
 setTimeout(() => {
-    newChart(neededDataToNeededPrices(neededData), getLast7DaysLabels());
+    newChart(myLineChart1,neededDataToNeededPrices(neededData), getLast7DaysLabels(),document.getElementById("myAreaChart"));
+    newChart(myLineChart2,dataforvolatility, Array.from({ length: 365 }, (_, i) => i + 1),document.getElementById("TarihselVolaliteChart"));
 }, 100);
 
 function neededDataToNeededPrices(neededData) {
@@ -174,12 +178,13 @@ function neededDataToNeededPrices(neededData) {
     return neededPrices.reverse();
 }
 
-let myLineChart;
+var myLineChart1, myLineChart2;
 
-async function newChart(useThisData, LabelData) {
-    if (myLineChart) myLineChart.destroy();
+async function newChart(chart,useThisData, LabelData,ctx) {
+    if(myLineChart1) myLineChart1.destroy();
+    if (chart) chart.destroy();
 
-    myLineChart = await new Chart(document.getElementById("myAreaChart"), {
+    chart = await new Chart(ctx, {
         type: "line",
         data: {
             labels: LabelData, //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
