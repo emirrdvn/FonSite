@@ -26,27 +26,47 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
+//Ay Hesaplama
+function getLast6MonthsLabels() {
+  const labels = [];
+  const today = new Date();
+  const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 
-// Area Chart Example
+  for (let i = 5; i >= 0; i--) {
+    const pastDate = new Date(today);
+    pastDate.setMonth(today.getMonth() - i);
+
+    // Ayın adını almak
+    const monthName = months[pastDate.getMonth()];
+    labels.push(monthName);
+  }
+
+  return labels;
+}
+
+var volalitedata=[];
+var volalitedata = neededDataToNeededPrices(dataforvolatility.slice(0, 7));
+function neededDataToNeededPrices(neededData) {
+  neededPrices = [];
+  neededData.forEach((data) => {
+      neededPrices.push(data);
+  });
+
+  return neededPrices;
+}
+console.log(volalitedata);
+// Bar Chart Example
 var ctx = document.getElementById("TarihselVolaliteChart");
-var myLineChart = new Chart(ctx, {
+var myBarChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ['1', '2', '3', '4', '5', '6', '7'],
     datasets: [{
-      label: "Earnings",
-      lineTension: 0.3,
-      backgroundColor: "rgba(78, 115, 223, 0.05)",
-      borderColor: "rgba(78, 115, 223, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointBorderColor: "rgba(78, 115, 223, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      label: "Volalite",
+      backgroundColor: "#515151",
+      hoverBackgroundColor: "#090a09",
+      borderColor: "#4e73df",
+      data:  dataforvolatility.slice(0, 7),
     }],
   },
   options: {
@@ -62,23 +82,26 @@ var myLineChart = new Chart(ctx, {
     scales: {
       xAxes: [{
         time: {
-          unit: 'date'
+          unit: 'month'
         },
         gridLines: {
           display: false,
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 7
-        }
+          maxTicksLimit: 6
+        },
+        maxBarThickness: 25,
       }],
       yAxes: [{
         ticks: {
+          min: 0,
+          max: 55,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return '' + number_format(value);
           }
         },
         gridLines: {
@@ -94,25 +117,23 @@ var myLineChart = new Chart(ctx, {
       display: false
     },
     tooltips: {
-      backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
       titleFontSize: 14,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
       borderColor: '#dddfeb',
       borderWidth: 1,
       xPadding: 15,
       yPadding: 15,
       displayColors: false,
-      intersect: false,
-      mode: 'index',
       caretPadding: 10,
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
         }
       }
-    }
+    },
   }
 });

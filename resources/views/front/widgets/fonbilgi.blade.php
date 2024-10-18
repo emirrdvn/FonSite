@@ -7,7 +7,6 @@
     echo "<script>var fonYatirimciSayisiMonthlyBarChart = $fonYatirimciSayisiMonthlyBarChart;</script>";
     echo "<script>var fonPayAdetMonthlyBarChart = $fonPayAdetMonthlyBarChart;</script>";
     echo "<script>var weightsforchart = $weightsforchart;</script>";
-    
     ?>
 
     <!-- CHART AREA -->
@@ -115,7 +114,7 @@
 
     <!-- FON TOPLAM DEĞER -->
     <div class="row">
-        <div class="col-3">
+        <div class="col-lg-3 col-md-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h5 class="m-0 font-weight-bold text-dark">Fon Toplam Değer</h6>
@@ -129,7 +128,7 @@
             </div>
         </div>
         {{-- YATIRIMCI SAYISI --}}
-        <div class="col-3">
+        <div class="col-lg-3 col-md-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h5 class="m-0 font-weight-bold text-dark">Yatırımcı Sayısı</h6>
@@ -143,7 +142,7 @@
             </div>
         </div>
         {{-- DOLAŞIMDAKİ PAY ADETİ --}}
-        <div class="col-3">
+        <div class="col-lg-3 col-md-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h5 class="m-0 font-weight-bold text-dark">Dolaşımdaki Pay Adedi</h6>
@@ -192,7 +191,7 @@
         <div class="col-xl-9 ">
 
             <div class="row ">
-                <div class="col-3">
+                <div class="col-lg-3 col-md-4">
                     <div
                         class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
                         <div
@@ -279,7 +278,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-lg-3 col-md-4">
                     <div
                         class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
                         <div
@@ -366,7 +365,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-lg-3 col-md-4">
                     <div
                         class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
                         <div
@@ -500,7 +499,7 @@
     </div>
     <!-- BİN LİRA NE -->
     <div class="row">
-        <div class="col-9 ">
+        <div class="col-lg-9 col-md-12 ">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h5 class="m-0 font-weight-bold text-dark">1000 TL Ne Oldu</h6>
@@ -516,6 +515,7 @@
     </div>
 
     <!-- Tarihsel Volalite -->
+    <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
 
     <div class="row">
         <div class="col-sm-6">

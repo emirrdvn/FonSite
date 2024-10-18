@@ -104,7 +104,6 @@ class FonController extends Controller
             );
         }
 
-
         $fonPayAdetMonthly = [];
         $fonYatirimciSayisiMonthly = [];
         for ($i = 6; $i > 0; $i--) {
@@ -132,8 +131,16 @@ class FonController extends Controller
                 $fonPrice
             );
         }
-
-
+        $fonVolatility=array();
+        // $fonVolatility = DB::table('volatility')
+        //     ->where('fon_id', $fon->id)
+        //     ->orderByDesc(column: 'date')
+        //     ->get();
+        DB::table('volatility')->get()->each(function ($item) use (&$fonVolatility) {
+            array_push($fonVolatility, $item->volatility);
+        });
+        
+        $volatilityforAreaChart= json_encode($fonVolatility);
         $fonYatirimciSayisiMonthlyBarChart = json_encode($fonYatirimciSayisiMonthly);
         $fonPayAdetMonthlyBarChart = json_encode($fonPayAdetMonthly);
         return view('front.homepage', compact(
@@ -148,7 +155,8 @@ class FonController extends Controller
             'fonYatirimciSayisiMonthly',
             'fonYatirimciSayisiMonthlyBarChart',
             'fonPayAdetMonthlyBarChart',
-            'weightsforchart'
+            'weightsforchart',
+            'volatilityforAreaChart'
         ));
     }
 }
