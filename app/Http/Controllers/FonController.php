@@ -23,10 +23,10 @@ class FonController extends Controller
         DB::table('fonprices')->where('fon_id', $fon->id)
             ->orderBy('date', 'desc')
             ->get()->each(function ($item) use (&$fonprices) {
-                array_push($fonprices, $item);
+                array_push($fonprices, $item->price);
             });
         $dataforchart = json_encode($fonprices);
-
+        
         //PARA WEIGHTS
         $weights = array();
         DB::table('paradeger')->get()->each(function ($item) use (&$weights) {
@@ -43,8 +43,8 @@ class FonController extends Controller
         
         $weightsforchart = json_encode($distribution);
 
-
-
+        $yedigunluk = json_encode(array_slice($fonprices, 0, 7));
+        
         //sonradan eklendi
 
         $fonPriceLast = DB::table('fonprices')
@@ -131,11 +131,8 @@ class FonController extends Controller
                 $fonPrice
             );
         }
+
         $fonVolatility=array();
-        // $fonVolatility = DB::table('volatility')
-        //     ->where('fon_id', $fon->id)
-        //     ->orderByDesc(column: 'date')
-        //     ->get();
         DB::table('volatility')->get()->each(function ($item) use (&$fonVolatility) {
             array_push($fonVolatility, $item->volatility);
         });
@@ -156,7 +153,8 @@ class FonController extends Controller
             'fonYatirimciSayisiMonthlyBarChart',
             'fonPayAdetMonthlyBarChart',
             'weightsforchart',
-            'volatilityforAreaChart'
+            'volatilityforAreaChart',
+            'yedigunluk'
         ));
     }
 }

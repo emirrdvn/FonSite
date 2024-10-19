@@ -1,20 +1,83 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Ay Gün Butonları -->
+    <style>
+        .tab {
+            overflow: hidden;
+            
+        }
+
+        /* Style the buttons that are used to open the tab content */
+        .tab button {
+            background-color: #595b68;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: #ccc;
+        }
+
+        /* Style the tab content */
+        
+    </style>
 
     <?php
     echo "<script>var dataforchart = $dataforchart;</script>";
     echo "<script>var fonYatirimciSayisiMonthlyBarChart = $fonYatirimciSayisiMonthlyBarChart;</script>";
     echo "<script>var fonPayAdetMonthlyBarChart = $fonPayAdetMonthlyBarChart;</script>";
     echo "<script>var weightsforchart = $weightsforchart;</script>";
+    echo "<script>var yedigunluk = $yedigunluk;</script>";
     ?>
 
     <!-- CHART AREA -->
     <div class="row">
         <div class="col-sm-6">
-            {{-- <div class="text-left py-1">
+            <div class="tab  ">
+                <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
+                <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+            </div>
+        </div>
+        <!-- Tab content -->
+        <div class="col-xl-9 col-lg-7">
+            <div id="London" class="tabcontent">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="YediGunlukLineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Paris" class="tabcontent">
+                <h3>Paris</h3>
+                <p>Paris is the capital of France.</p>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+                <h3>Tokyo</h3>
+                <p>Tokyo is the capital of Japan.</p>
+            </div>
+        </div>
+
+
+        {{-- ÖNCEKİ KOD OLMAZSA GERİ DÖN --}}
+        {{-- <div class="text-left py-1">
                     <h6 class="h1 font-weight-bold text-dark">Özet Rapor</h6>
-            </div> --}}
+            </div> 
             <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
                 <label class="btn btn-sm btn-dark btn-simple active" id="0">
                     <input id="radio0" type="radio" name="options" checked>
@@ -53,17 +116,17 @@
                 </label>
             </div>
         </div>
-
+    
         <div class="col-xl-9 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        <canvas id="YediGunlukLineChart"></canvas>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
         {{-- FON BİLGİLERİ --}}
@@ -120,7 +183,8 @@
                     <h5 class="m-0 font-weight-bold text-dark">Fon Toplam Değer</h6>
                 </div>
                 <div class="card-body">
-                    <p>{{ number_format(floatval(str_replace(',', '.', $fonPrice)) * $fonPayAdet, 2, '.', ',') }} ₺</p>
+                    <p>{{ number_format(floatval(str_replace(',', '.', $fonPrice)) * $fonPayAdet, 2, '.', ',') }} ₺
+                    </p>
                     <div class="chart-bar">
                         <canvas id="FonToplamDegerBarChart"></canvas>
                     </div>
@@ -194,8 +258,7 @@
                 <div class="col-lg-3 col-md-4">
                     <div
                         class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                        <div
-                            class="card-header text-dark font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">
+                        <div class="card-header text-dark font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">
                             En
                             Büyük Pozisyonlar</div>
                         <div>
@@ -390,7 +453,8 @@
                                         </div>
                                     </div>
                                     <div class="text-sm tabular-nums flex flex-col items-end">
-                                        <div><span class="inline-flex items-center tabular-nums">148,90</span></div>
+                                        <div><span class="inline-flex items-center tabular-nums">148,90</span>
+                                        </div>
                                         <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
                                                 class="inline-flex items-center tabular-nums"><span
                                                     class="text-xs text-foreground-03 mr-1">%</span><span
@@ -444,7 +508,8 @@
                                         </div>
                                     </div>
                                     <div class="text-sm tabular-nums flex flex-col items-end">
-                                        <div><span class="inline-flex items-center tabular-nums">182,40</span></div>
+                                        <div><span class="inline-flex items-center tabular-nums">182,40</span>
+                                        </div>
                                         <div class="ml-2 w-11 text-[12px] -mt-0.5 text-right"><span
                                                 class="inline-flex items-center tabular-nums"><span
                                                     class="text-xs text-foreground-03 mr-1">%</span><span
@@ -519,9 +584,9 @@
 
     <div class="row">
         <div class="col-sm-6">
-             <div class="text-left py-1">
-                    <h6 class="h2 font-weight-bold text-dark">Tarihsel Volalite</h6>
-            </div> 
+            <div class="text-left py-1">
+                <h6 class="h2 font-weight-bold text-dark">Tarihsel Volalite</h6>
+            </div>
         </div>
 
         <div class="col-xl-9 col-lg-7">
@@ -564,6 +629,30 @@
     });
 </script>
 <script>
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+<script>
+    document.getElementById("defaultOpen").click();
     function openCity(evt, cityName) {
         // Declare all variables
         var i, tabcontent, tablinks;
