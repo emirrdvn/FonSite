@@ -64,7 +64,7 @@
         <!-- Nav Item - Alerts -->
         <li class="nav-item  no-arrow mx-1">
             <div>
-                <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">10 Ekim 2024</div>
+                <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">{{$now}}</div>
                 <div class="text-2xl font-semibold text-white">
                     <span class="inline-flex items-center tabular-nums">0,567620</span>
                 </div>

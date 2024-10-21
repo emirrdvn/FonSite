@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Attribute;
 use League\CommonMark\Extension\Attributes\Node\Attributes;
 use DateTime;
+use Carbon\Carbon;
 
 class FonController extends Controller
 {
@@ -137,7 +138,7 @@ class FonController extends Controller
         DB::table('volatility')->get()->each(function ($item) use (&$fonVolatility) {
             array_push($fonVolatility, $item->volatility);
         });
-        
+        $now =Carbon::now()->format('d-m-Y');
         $volatilityforAreaChart= json_encode($fonVolatility);
         $fonYatirimciSayisiMonthlyBarChart = json_encode($fonYatirimciSayisiMonthly);
         $fonPayAdetMonthlyBarChart = json_encode($fonPayAdetMonthly);
@@ -157,6 +158,8 @@ class FonController extends Controller
             'volatilityforAreaChart',
             'yedigunluk',
             'otuzgunluk',
+            'now'
+            
         ));
     }
 }

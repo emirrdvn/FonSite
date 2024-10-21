@@ -18,16 +18,16 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs btn-group btn-group-toggle float-left" role="tablist">
-                <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple" href="#linebirhafta" aria-controls="home" role="tab"
-                        data-toggle="tab">7G</a></li>
-                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiray" aria-controls="profile" role="tab"
-                        data-toggle="tab">1A</a></li>
-                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineucay" aria-controls="profile" role="tab"
-                        data-toggle="tab">3A</a></li>
-                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiryil" aria-controls="profile" role="tab"
-                        data-toggle="tab">1Y</a></li>
-                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineucyil" aria-controls="profile" role="tab"
-                        data-toggle="tab">3Y</a></li>
+                <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple" href="#linebirhafta"
+                        aria-controls="home" role="tab" data-toggle="tab">7G</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiray"
+                        aria-controls="profile" role="tab" data-toggle="tab">1A</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineucay"
+                        aria-controls="profile" role="tab" data-toggle="tab">3A</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiryil"
+                        aria-controls="profile" role="tab" data-toggle="tab">1Y</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineucyil"
+                        aria-controls="profile" role="tab" data-toggle="tab">3Y</a></li>
             </ul>
         </div>
         <!-- Tab panes -->
@@ -575,21 +575,62 @@
     </div>
     <!-- BİN LİRA NE -->
     <div class="row">
-        <div class="col-lg-9 col-md-12 ">
+        <div class="col-xl-9 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h5 class="m-0 font-weight-bold text-dark">1000 TL Ne Oldu</h6>
+                    <h5 class="m-0 font-weight-bold text-dark">1000 TL Ne Oldu
+                        <ul
+                            class="nav nav-tabs btn-group btn-group-toggle float-right" role="tablist">
+                            <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple"
+                                    href="#barbiray" aria-controls="home" role="tab" data-toggle="tab">1A</a>
+                            </li>
+                            <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#barucay"
+                                    aria-controls="profile" role="tab" data-toggle="tab">3A</a></li>
+                            <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#baraltiay"
+                                    aria-controls="profile" role="tab" data-toggle="tab">6A</a></li>
+                        </ul>
+                    </h6>
                 </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-bar">
-                        <canvas id="BinLiraBarChart"></canvas>
+
+            </div>
+            <!-- Nav tabs -->
+
+        </div>
+        <!-- Tab panes -->
+        <div class="tab-content col-xl-9 col-lg-7">
+            <div role="tabpanel" class="tab-pane active " id="barbiray">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="BinLiraBarChart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="barucay">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="BinLiraBarChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="baraltiay">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="BinLiraBarChart3"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+       
     </div>
-
     <!-- Tarihsel Volalite -->
     <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
 
@@ -636,135 +677,3 @@
 </script>
 
 
-<script>
-    window.chartColors = {
-        red: 'rgb(255, 99, 132)',
-        orange: 'rgb(255, 159, 64)',
-        yellow: 'rgb(255, 205, 86)',
-        green: 'rgb(75, 192, 192)',
-        blue: 'rgb(54, 162, 235)',
-        purple: 'rgb(153, 102, 255)',
-        grey: 'rgb(231,233,237)'
-    };
-
-    var randomScalingFactor = function() {
-        return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
-    };
-
-    var line1 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
-        randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
-        randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
-    ];
-
-    var line2 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
-        randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
-        randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
-    ];
-
-    var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
-        "November", "December"
-    ];
-    var config = {
-        type: 'line',
-        data: {
-            labels: MONTHS,
-            datasets: [{
-                label: "My First dataset",
-                backgroundColor: window.chartColors.red,
-                borderColor: window.chartColors.red,
-                data: line1,
-                fill: false,
-            }, {
-                label: "My Second dataset",
-                fill: false,
-                backgroundColor: window.chartColors.blue,
-                borderColor: window.chartColors.blue,
-                data: line2,
-            }]
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Chart.js Line Chart'
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-            },
-            hover: {
-                mode: 'nearest',
-                intersect: true
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Month'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                    },
-                }]
-            }
-        }
-    };
-
-    var ctx = document.getElementById("canvas").getContext("2d");
-    var myLine = new Chart(ctx, config);
-
-    var data1 = [
-        randomScalingFactor(),
-        randomScalingFactor(),
-    ];
-
-    var data2 = [
-        randomScalingFactor(),
-        randomScalingFactor(),
-    ];
-
-    var ctx = document.getElementById("chart-area").getContext("2d");
-    var myPie = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ["FTE", "FTC"],
-            datasets: [{
-                label: 'Dataset 1',
-                data: data1,
-                backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB"
-                ],
-                hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB"
-                ],
-                borderWidth: 5,
-            }, {
-                label: 'Dataset 2',
-                data: data2,
-                backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB"
-                ],
-                hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB"
-                ],
-                borderWidth: 5,
-            }],
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Employee Overview',
-                fontStyle: 'bold',
-                fontSize: 20
-            }
-        }
-    });
-</script>
