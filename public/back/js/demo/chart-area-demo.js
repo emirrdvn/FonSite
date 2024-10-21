@@ -120,68 +120,21 @@ function getLast30Days() {
 
 // Area Chart Example
 
-var period = 0;
 
-var neededData = dataforchart.slice(0, 7);
-var neededPrices = [];
-var neededLabels = Array.from({ length: 7 }, (_, i) => i + 1);
-
-document.getElementsByName("options").forEach(function (radio) {
-    radio.addEventListener("click", function () {
-        period = parseInt(radio.id.slice(-1));
-        switch (period) {
-            case 0:
-                neededData = dataforchart.slice(0, 7);
-                neededLabels = getLast7DaysLabels();
-                break;
-            case 1:
-                neededData = dataforchart.slice(0, 30);
-                neededLabels = getLast30Days();
-                break;
-            case 2:
-                neededData = dataforchart.slice(0, 30 * 3);
-                neededLabels = getLast90Days();
-                break;
-            case 3:
-                neededData = dataforchart.slice(0, 365);
-                neededLabels = Array.from({ length: 365 }, (_, i) => i + 1);
-                break;
-            case 4:
-                neededData = dataforchart.slice(0, 365 * 3);
-                neededLabels = Array.from({ length: 365 * 3 }, (_, i) => i + 1);
-
-                break;
-            default:
-                neededData = dataforchart.slice(0, 7);
-                neededLabels = getLast7DaysLabels();
-                break;
-        }
-        if (myLineChart1) myLineChart1.destroy();
-        setTimeout(() => {
-            newChart(myLineChart1,neededDataToNeededPrices(neededData), neededLabels,document.getElementById("myAreaChart"));
-            
-        }, 100);
-    });
-});
 
 setTimeout(() => {
-    newChart(myLineChart1,neededDataToNeededPrices(neededData), getLast7DaysLabels(),document.getElementById("myAreaChart"));
-    newChart(myLineChart2,dataforvolatility, Array.from({ length: 365 }, (_, i) => i + 1),document.getElementById("TarihselVolaliteChart"));
+    newChart(myLineChart1,yedigunluk.reverse(), getLast7DaysLabels(),document.getElementById("myAreaChart"));
+    newChart(myLineChart2,otuzgunluk.reverse(), getLast30Days(),document.getElementById("myAreaAylikChart"));
+    newChart(myLineChart3,dataforchart.slice(0, 30 * 3).reverse(), getLast90Days(),document.getElementById("myAreaUcAylikChart"));
+    newChart(myLineChart4,dataforchart.slice(0, 365).reverse(), Array.from({ length: 365 }, (_, i) => i + 1),document.getElementById("myAreaYillikChart"));
+    newChart(myLineChart5,dataforchart.slice(0, 365 * 3), Array.from({ length: 365 * 3 }, (_, i) => i + 1),document.getElementById("myAreaUcYillikChart"));
 }, 100);
 
-function neededDataToNeededPrices(neededData) {
-    neededPrices = [];
-    neededData.forEach((data) => {
-        neededPrices.push(data.price);
-    });
 
-    return neededPrices.reverse();
-}
-
-var myLineChart1, myLineChart2;
+var myLineChart1, myLineChart2, myLineChart3, myLineChart4,myLineChart5;
 
 async function newChart(chart,useThisData, LabelData,ctx) {
-    if(myLineChart1) myLineChart1.destroy();
+    
     if (chart) chart.destroy();
 
     chart = await new Chart(ctx, {

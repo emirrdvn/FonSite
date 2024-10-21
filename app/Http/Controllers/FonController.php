@@ -44,6 +44,7 @@ class FonController extends Controller
         $weightsforchart = json_encode($distribution);
 
         $yedigunluk = json_encode(array_slice($fonprices, 0, 7));
+        $otuzgunluk = json_encode(array_slice($fonprices, 0, 30));
         
         //sonradan eklendi
 
@@ -154,7 +155,8 @@ class FonController extends Controller
             'fonPayAdetMonthlyBarChart',
             'weightsforchart',
             'volatilityforAreaChart',
-            'yedigunluk'
+            'yedigunluk',
+            'otuzgunluk',
         ));
     }
 }

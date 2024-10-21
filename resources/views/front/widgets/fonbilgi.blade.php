@@ -1,36 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Ay Gün Butonları -->
-    <style>
-        .tab {
-            overflow: hidden;
-            
-        }
-
-        /* Style the buttons that are used to open the tab content */
-        .tab button {
-            background-color: #595b68;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-        }
-
-        /* Change background color of buttons on hover */
-        .tab button:hover {
-            background-color: #ddd;
-        }
-
-        /* Create an active/current tablink class */
-        .tab button.active {
-            background-color: #ccc;
-        }
-
-        /* Style the tab content */
-        
-    </style>
 
     <?php
     echo "<script>var dataforchart = $dataforchart;</script>";
@@ -38,46 +8,86 @@
     echo "<script>var fonPayAdetMonthlyBarChart = $fonPayAdetMonthlyBarChart;</script>";
     echo "<script>var weightsforchart = $weightsforchart;</script>";
     echo "<script>var yedigunluk = $yedigunluk;</script>";
+    echo "<script>var otuzgunluk = $otuzgunluk;</script>";
+    echo "<script>var volatilityforAreaChart = $volatilityforAreaChart;</script>";
     ?>
 
     <!-- CHART AREA -->
     <div class="row">
         <div class="col-sm-6">
-            <div class="tab  ">
-                <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-                <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-            </div>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs btn-group btn-group-toggle float-left" role="tablist">
+                <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple" href="#linebirhafta" aria-controls="home" role="tab"
+                        data-toggle="tab">7G</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiray" aria-controls="profile" role="tab"
+                        data-toggle="tab">1A</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineucay" aria-controls="profile" role="tab"
+                        data-toggle="tab">3A</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiryil" aria-controls="profile" role="tab"
+                        data-toggle="tab">1Y</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineucyil" aria-controls="profile" role="tab"
+                        data-toggle="tab">3Y</a></li>
+            </ul>
         </div>
-        <!-- Tab content -->
-        <div class="col-xl-9 col-lg-7">
-            <div id="London" class="tabcontent">
+        <!-- Tab panes -->
+        <div class="tab-content col-xl-9 col-lg-7">
+            <div role="tabpanel" class="tab-pane active " id="linebirhafta">
                 <div class="card shadow mb-4">
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="YediGunlukLineChart"></canvas>
+                            <canvas id="myAreaChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div id="Paris" class="tabcontent">
-                <h3>Paris</h3>
-                <p>Paris is the capital of France.</p>
+            <div role="tabpanel" class="tab-pane" id="linebiray">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaAylikChart"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div id="Tokyo" class="tabcontent">
-                <h3>Tokyo</h3>
-                <p>Tokyo is the capital of Japan.</p>
+            <div role="tabpanel" class="tab-pane" id="lineucay">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaUcAylikChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="linebiryil">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaYillikChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="lineucyil">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaUcYillikChart"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
 
-        {{-- ÖNCEKİ KOD OLMAZSA GERİ DÖN --}}
-        {{-- <div class="text-left py-1">
-                    <h6 class="h1 font-weight-bold text-dark">Özet Rapor</h6>
-            </div> 
+        {{-- 
+
+            {{-- ÖNCEKİ KOD OLMAZSA GERİ DÖN 
             <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
                 <label class="btn btn-sm btn-dark btn-simple active" id="0">
                     <input id="radio0" type="radio" name="options" checked>
@@ -116,13 +126,13 @@
                 </label>
             </div>
         </div>
-    
+
         <div class="col-xl-9 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="YediGunlukLineChart"></canvas>
+                        <canvas id="myAreaChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -258,7 +268,8 @@
                 <div class="col-lg-3 col-md-4">
                     <div
                         class="card rounded-lg overflow-hidden mb-4 md:mb-0 bg-background-adaptive-01 border border-stroke-01">
-                        <div class="card-header text-dark font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">
+                        <div
+                            class="card-header text-dark font-weight-bold mb-3 font-bold py-3 px-4 text-foreground-01">
                             En
                             Büyük Pozisyonlar</div>
                         <div>
@@ -601,9 +612,6 @@
         </div>
 
     </div>
-
-
-
 </div>
 </div>
 
@@ -623,54 +631,140 @@
             // Önce mevcut aktif durumu kaldır, sonra tıklanan butonu aktif yap
             $('#button-group .btn').removeClass('active');
             $(this).addClass('active');
-
-
         });
     });
 </script>
-<script>
-    function openCity(evt, cityName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
 
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
 
 <script>
-    document.getElementById("defaultOpen").click();
-    function openCity(evt, cityName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
+    window.chartColors = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(231,233,237)'
+    };
 
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+    var randomScalingFactor = function() {
+        return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
+    };
+
+    var line1 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
+        randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
+        randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
+    ];
+
+    var line2 = [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
+        randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
+        randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(),
+    ];
+
+    var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+        "November", "December"
+    ];
+    var config = {
+        type: 'line',
+        data: {
+            labels: MONTHS,
+            datasets: [{
+                label: "My First dataset",
+                backgroundColor: window.chartColors.red,
+                borderColor: window.chartColors.red,
+                data: line1,
+                fill: false,
+            }, {
+                label: "My Second dataset",
+                fill: false,
+                backgroundColor: window.chartColors.blue,
+                borderColor: window.chartColors.blue,
+                data: line2,
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Chart.js Line Chart'
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                    },
+                }]
+            }
         }
+    };
 
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
+    var ctx = document.getElementById("canvas").getContext("2d");
+    var myLine = new Chart(ctx, config);
+
+    var data1 = [
+        randomScalingFactor(),
+        randomScalingFactor(),
+    ];
+
+    var data2 = [
+        randomScalingFactor(),
+        randomScalingFactor(),
+    ];
+
+    var ctx = document.getElementById("chart-area").getContext("2d");
+    var myPie = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["FTE", "FTC"],
+            datasets: [{
+                label: 'Dataset 1',
+                data: data1,
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB"
+                ],
+                borderWidth: 5,
+            }, {
+                label: 'Dataset 2',
+                data: data2,
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB"
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB"
+                ],
+                borderWidth: 5,
+            }],
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Employee Overview',
+                fontStyle: 'bold',
+                fontSize: 20
+            }
         }
-
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
+    });
 </script>

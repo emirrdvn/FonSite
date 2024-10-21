@@ -27,130 +27,102 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     }
     return s.join(dec);
 }
-
-//Gün Hesaplama
-function getLast7DaysLabels() {
+//Ay Hesaplama
+function getLast6MonthsLabels() {
     const labels = [];
     const today = new Date();
-    const daysOfWeek = [
-        "Pazar",
-        "Pazartesi",
-        "Salı",
-        "Çarşamba",
-        "Perşembe",
-        "Cuma",
-        "Cumartesi",
+    const months = [
+        "Ocak",
+        "Şubat",
+        "Mart",
+        "Nisan",
+        "Mayıs",
+        "Haziran",
+        "Temmuz",
+        "Ağustos",
+        "Eylül",
+        "Ekim",
+        "Kasım",
+        "Aralık",
     ];
 
-    for (let i = 6; i >= 0; i--) {
+    for (let i = 5; i >= 0; i--) {
         const pastDate = new Date(today);
-        pastDate.setDate(today.getDate() - i);
+        pastDate.setMonth(today.getMonth() - i);
 
-        // Haftanın gününün adını almak
-        const dayName = daysOfWeek[pastDate.getDay()];
-        labels.push(dayName);
+        // Ayın adını almak
+        const monthName = months[pastDate.getMonth()];
+        labels.push(monthName);
     }
 
     return labels;
 }
-//3 Ay Hesaplama
-function getLast90Days() {
-    const daysArray = [];
-    const today = new Date();
-    const months = [
-        "Ocak",
-        "Şubat",
-        "Mart",
-        "Nisan",
-        "Mayıs",
-        "Haziran",
-        "Temmuz",
-        "Ağustos",
-        "Eylül",
-        "Ekim",
-        "Kasım",
-        "Aralık",
-    ];
-
-    for (let i = 0; i < 90; i++) {
-        const pastDate = new Date(today);
-        pastDate.setDate(today.getDate() - i);
-
-        // Gün, ay ve yıl formatında tarih oluştur
-        const day = pastDate.getDate();
-        const month = months[pastDate.getMonth()];
-        const year = pastDate.getFullYear();
-
-        daysArray.push(`${day} ${month} ${year}`);
-    }
-
-    return daysArray.reverse();
-}
-function getLast30Days() {
-    const daysArray = [];
-    const today = new Date();
-    const months = [
-        "Ocak",
-        "Şubat",
-        "Mart",
-        "Nisan",
-        "Mayıs",
-        "Haziran",
-        "Temmuz",
-        "Ağustos",
-        "Eylül",
-        "Ekim",
-        "Kasım",
-        "Aralık",
-    ];
-
-    for (let i = 0; i < 30; i++) {
-        const pastDate = new Date(today);
-        pastDate.setDate(today.getDate() - i);
-
-        // Gün, ay ve yıl formatında tarih oluştur
-        const day = pastDate.getDate();
-        const month = months[pastDate.getMonth()];
-
-        daysArray.push(`${day} ${month}`);
-    }
-
-    return daysArray.reverse();
-}
-
-// Area Chart Example
-
-
 
 setTimeout(() => {
-    newChart(otuzgunluk.reverse(), getLast30DaysLabels());
+    newChart(
+        myBarChart1,
+        [
+            4222718443, 2222718443, 3222718443, 3522718443, 1222718443,
+            2922718443,
+        ],
+        getLast6MonthsLabels(),
+        document.getElementById("FonToplamDegerBarChart"),
+        0,
+        5222718443,
+        "₺",
+        "Toplam Değer"
+    );
+    newChart(
+        myBarChart2,
+        fonYatirimciSayisiMonthlyBarChart,
+        getLast6MonthsLabels(),
+        document.getElementById("YatirimciBarChart"),
+        0,
+        80000,
+        "",
+        "Yatırımcı Sayısı"
+    );
+    newChart(
+        myBarChart3,
+        fonPayAdetMonthlyBarChart,
+        getLast6MonthsLabels(),
+        document.getElementById("PayAdetBarChart"),
+        0,
+        800000000,
+        "",
+        "Dolaşımdaki Pay Adeti"
+    );
+    // newChart(
+    //     myBarChart4,
+    //     dataforchart.slice(0, 365).reverse(),
+    //     Array.from({ length: 365 }, (_, i) => i + 1),
+    //     document.getElementById("myAreaYillikChart")
+    // );
 }, 100);
+console.log(fonPayAdetMonthlyBarChart);
 
+var myBarChart1, myBarChart2, myBarChart3, myBarChart4;
 
-
-let myLineChart;
-
-async function newChart(useThisData, useThisLabels) {
-    if (myLineChart) myLineChart.destroy();
-
-    myLineChart = await new Chart(document.getElementById("OtuzGunlukLineChart"), {
-        type: "line",
+async function newChart(
+    chart,
+    useThisData,
+    LabelData,
+    ctx,
+    min,
+    max,
+    birim,
+    tooltipLabel
+) {
+    chart = new Chart(ctx, {
+        type: "bar",
         data: {
-            labels: useThisLabels,
+            labels: LabelData,
             datasets: [
                 {
-                    label: "Fiyat",
-                    lineTension: 0.3,
-                    backgroundColor: "rgba(0, 0, 0, 0.07)",
-                    borderColor: "rgba(0, 0, 0, 1)",
-                    pointRadius: 3,
-                    pointBackgroundColor: "rgba(0, 0, 0, 1)",
-                    pointBorderColor: "rgba(0, 0, 0, 1)",
-                    pointHoverRadius: 3,
-                    pointHoverBackgroundColor: "rgba(255, 255, 255, 1)",
-                    pointHoverBorderColor: "rgba(255, 255, 255, 0.5)",
-                    pointHitRadius: 5,
-                    pointBorderWidth: 2,
+                    label: tooltipLabel,
+                    backgroundColor: "#515151",
+                    hoverBackgroundColor: "#090a09",
+                    borderColor: "#4e73df",
                     data: useThisData,
                 },
             ],
@@ -169,25 +141,28 @@ async function newChart(useThisData, useThisLabels) {
                 xAxes: [
                     {
                         time: {
-                            unit: "date",
+                            unit: "month",
                         },
                         gridLines: {
                             display: false,
                             drawBorder: false,
                         },
                         ticks: {
-                            maxTicksLimit: 30,
+                            maxTicksLimit: 6,
                         },
+                        maxBarThickness: 25,
                     },
                 ],
                 yAxes: [
                     {
                         ticks: {
+                            min: min || 0,
+                            max: max || 5222718443,
                             maxTicksLimit: 5,
                             padding: 10,
                             // Include a dollar sign in the ticks
                             callback: function (value, index, values) {
-                                return number_format(value) + "₺";
+                                return birim + number_format(value);
                             },
                         },
                         gridLines: {
@@ -204,18 +179,16 @@ async function newChart(useThisData, useThisLabels) {
                 display: false,
             },
             tooltips: {
-                backgroundColor: "rgb(255,255,255)",
-                bodyFontColor: "#858796",
                 titleMarginBottom: 10,
                 titleFontColor: "#6e707e",
                 titleFontSize: 14,
+                backgroundColor: "rgb(255,255,255)",
+                bodyFontColor: "#858796",
                 borderColor: "#dddfeb",
                 borderWidth: 1,
                 xPadding: 15,
                 yPadding: 15,
                 displayColors: false,
-                intersect: false,
-                mode: "index",
                 caretPadding: 10,
                 callbacks: {
                     label: function (tooltipItem, chart) {
@@ -225,8 +198,8 @@ async function newChart(useThisData, useThisLabels) {
                         return (
                             datasetLabel +
                             ": " +
-                            number_format(tooltipItem.yLabel) +
-                            "₺"
+                            birim +
+                            number_format(tooltipItem.yLabel)
                         );
                     },
                 },
