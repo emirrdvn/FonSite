@@ -9,7 +9,12 @@
     echo "<script>var weightsforchart = $weightsforchart;</script>";
     echo "<script>var yedigunluk = $yedigunluk;</script>";
     echo "<script>var otuzgunluk = $otuzgunluk;</script>";
+    echo "<script>var doksangunluk = $doksangunluk;</script>";
+    echo "<script>var yillik = $yillik;</script>";
+    echo "<script>var ucyillik = $ucyillik;</script>";
     echo "<script>var volatilityforAreaChart = $volatilityforAreaChart;</script>";
+    echo "<script>var ftdforBarChartData = $ftdforBarChartData;</script>";
+    
     ?>
 
     <!-- CHART AREA -->
@@ -85,58 +90,7 @@
         </div>
 
 
-        {{-- 
-
-            {{-- ÖNCEKİ KOD OLMAZSA GERİ DÖN 
-            <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
-                <label class="btn btn-sm btn-dark btn-simple active" id="0">
-                    <input id="radio0" type="radio" name="options" checked>
-                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">7G</span>
-                    <span class="d-block d-sm-none">
-                        <i class="tim-icons icon-single-02"></i>
-                    </span>
-                </label>
-                <label class="btn btn-sm btn-dark btn-simple" id="1">
-                    <input id="radio1" type="radio" class="d-none d-sm-none" name="options">
-                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1A</span>
-                    <span class="d-block d-sm-none">
-                        <i class="tim-icons icon-gift-2"></i>
-                    </span>
-                </label>
-                <label class="btn btn-sm btn-dark btn-simple" id="2">
-                    <input id="radio2" type="radio" class="d-none" name="options">
-                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3A</span>
-                    <span class="d-block d-sm-none">
-                        <i class="tim-icons icon-tap-02"></i>
-                    </span>
-                </label>
-                <label class="btn btn-sm btn-dark btn-simple" id="3">
-                    <input id="radio3" type="radio" class="d-none" name="options">
-                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">1Y</span>
-                    <span class="d-block d-sm-none">
-                        <i class="tim-icons icon-tap-02"></i>
-                    </span>
-                </label>
-                <label class="btn btn-sm btn-dark btn-simple" id="4">
-                    <input id="radio4" type="radio" class="d-none" name="options">
-                    <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">3Y</span>
-                    <span class="d-block d-sm-none">
-                        <i class="tim-icons icon-tap-02"></i>
-                    </span>
-                </label>
-            </div>
-        </div>
-
-        <div class="col-xl-9 col-lg-7">
-            <div class="card shadow mb-4">
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+        
 
 
         {{-- FON BİLGİLERİ --}}
@@ -177,6 +131,28 @@
                     <div class="text-center">
                         <span class="mb-0 font-weight-bold ">Satış Valörü:</span>
                         <span>2</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="flex py-4">
+                            <span
+                                class="inline-flex items-center rounded-full font-medium mr-1 bg-shared-success-adaptive-02 text-foreground-01 px-2.5 py-1 text-sm">
+                                @if ($fon->active == 1)
+                                    <svg width="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true" class="mr-1 w-3.5 h-3.5">
+                                        <path fill-rule="evenodd"
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-success font-weight-bold">
+                                        TEFAS'ta İşleme Açık
+                                    </span>
+                                @else
+                                    <span class="text-danger font-weight-bold">
+                                        TEFAS'ta İşleme Kapalı
+                                    </span>
+                                @endif
+                            </span>
+                        </div>
                     </div>
 
 
@@ -576,9 +552,9 @@
     <!-- BİN LİRA NE -->
     <div class="row">
         <div class="col-xl-9 col-lg-7">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h5 class="m-0 font-weight-bold text-dark">1000 TL Ne Oldu
+            <div class="card shadow ">
+                <div class="card-header ">
+                    <h5 class="h2 font-weight-bold text-dark">1000 TL Ne Oldu
                         <ul
                             class="nav nav-tabs btn-group btn-group-toggle float-right" role="tablist">
                             <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple"
@@ -633,11 +609,10 @@
     </div>
     <!-- Tarihsel Volalite -->
     <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
-
     <div class="row">
         <div class="col-sm-6">
             <div class="text-left py-1">
-                <h6 class="h2 font-weight-bold text-dark">Tarihsel Volalite</h6>
+                <h6 class="h2 font-weight-bold text-dark">Tarihsel Volatilite</h6>
             </div>
         </div>
 

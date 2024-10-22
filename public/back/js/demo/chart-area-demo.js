@@ -125,9 +125,9 @@ function getLast30Days() {
 setTimeout(() => {
     newChart(myLineChart1,yedigunluk.reverse(), getLast7DaysLabels(),document.getElementById("myAreaChart"));
     newChart(myLineChart2,otuzgunluk.reverse(), getLast30Days(),document.getElementById("myAreaAylikChart"));
-    newChart(myLineChart3,dataforchart.slice(0, 30 * 3).reverse(), getLast90Days(),document.getElementById("myAreaUcAylikChart"));
-    newChart(myLineChart4,dataforchart.slice(0, 365).reverse(), Array.from({ length: 365 }, (_, i) => i + 1),document.getElementById("myAreaYillikChart"));
-    newChart(myLineChart5,dataforchart.slice(0, 365 * 3), Array.from({ length: 365 * 3 }, (_, i) => i + 1),document.getElementById("myAreaUcYillikChart"));
+    newChart(myLineChart3,doksangunluk.reverse(), getLast90Days(),document.getElementById("myAreaUcAylikChart"));
+    newChart(myLineChart4,yillik.reverse(), Array.from({ length: 365 }, (_, i) => i + 1),document.getElementById("myAreaYillikChart"));
+    newChart(myLineChart5,ucyillik.reverse(), Array.from({ length: 365 * 3 }, (_, i) => i + 1),document.getElementById("myAreaUcYillikChart"));
 }, 100);
 
 

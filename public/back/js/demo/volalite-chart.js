@@ -36,7 +36,7 @@ var myBarChart = new Chart(ctx, {
         labels: Array.from({ length: 506 }, (_, i) => i + 1),
         datasets: [
             {
-                label: "Fiyat",
+                label: "Volatilite",
                 lineTension: 0.3,
                 backgroundColor: "rgba(0, 0, 0, 0.07)",
                 borderColor: "rgba(0, 0, 0, 1)",
@@ -48,7 +48,7 @@ var myBarChart = new Chart(ctx, {
                 pointHoverBorderColor: "rgba(255, 255, 255, 0.5)",
                 pointHitRadius: 1,
                 pointBorderWidth: 2,
-                data: volatilityforAreaChart,
+                data: volatilityforAreaChart.reverse(),
             },
         ],
     },

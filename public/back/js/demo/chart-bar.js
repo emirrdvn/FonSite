@@ -61,14 +61,11 @@ function getLast6MonthsLabels() {
 setTimeout(() => {
     newChart(
         myBarChart1,
-        [
-            4222718443, 2222718443, 3222718443, 3522718443, 1222718443,
-            2922718443,
-        ],
+        ftdforBarChartData,
         getLast6MonthsLabels(),
         document.getElementById("FonToplamDegerBarChart"),
-        0,
-        5222718443,
+        200000000000,
+        350000000000,
         "₺",
         "Toplam Değer"
     );

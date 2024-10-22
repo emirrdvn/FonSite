@@ -64,9 +64,9 @@
         <!-- Nav Item - Alerts -->
         <li class="nav-item  no-arrow mx-1">
             <div>
-                <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">{{$now}}</div>
+                <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">{{ strftime('%e %B %Y', strtotime($time)) }}</div>
                 <div class="text-2xl font-semibold text-white">
-                    <span class="inline-flex items-center tabular-nums">0,567620</span>
+                    <span class="inline-flex items-center tabular-nums">{{ $fonPrice }}</span>
                 </div>
             </div>
         </li>
@@ -75,7 +75,7 @@
         <li class="nav-item  mx-1 show">
             <div class="text-foreground-03 text-sm text-white">1 Aylık Getiri</div>
                 <div class="text-2xl font-semibold " style="color: #e3dedeb3">
-                    <span class="inline-flex items-center tabular-nums">%-5,98</span>
+                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiffs['1Month'] }}</span>
                 </div>
         </li>
 
@@ -85,7 +85,7 @@
         <li class="nav-item dropdown no-arrow">
             <div class="text-foreground-03 text-sm text-white">3 Aylık Getiri</div>
                 <div class="text-2xl font-semibold" style="color: #e3dedeb3">
-                    <span class="inline-flex items-center tabular-nums">%-5,98</span>
+                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiffs['3Month'] }}</span>
             </div>
         </li>
 
