@@ -61,6 +61,7 @@ aria-hidden="true">
 <script src="{{asset('back/')}}/js/demo/binliranoldu-bar-chart.js"></script>
 <script src="{{asset('back/')}}/js/demo/volalite-chart.js"></script>
 <script src="{{asset('back/')}}/js/demo/chart-bar.js"></script>
+<script src="{{asset('back/')}}/js/demo/stacked-bar-chart.js"></script>
 
 
 

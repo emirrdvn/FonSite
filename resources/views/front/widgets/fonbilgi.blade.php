@@ -90,7 +90,7 @@
         </div>
 
 
-        
+
 
 
         {{-- FON BİLGİLERİ --}}
@@ -137,8 +137,8 @@
                             <span
                                 class="inline-flex items-center rounded-full font-medium mr-1 bg-shared-success-adaptive-02 text-foreground-01 px-2.5 py-1 text-sm">
                                 @if ($fon->active == 1)
-                                    <svg width="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        aria-hidden="true" class="mr-1 w-3.5 h-3.5">
+                                    <svg width="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                        fill="currentColor" aria-hidden="true" class="mr-1 w-3.5 h-3.5">
                                         <path fill-rule="evenodd"
                                             d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
                                             clip-rule="evenodd"></path>
@@ -555,8 +555,7 @@
             <div class="card shadow ">
                 <div class="card-header ">
                     <h5 class="h2 font-weight-bold text-dark">1000 TL Ne Oldu
-                        <ul
-                            class="nav nav-tabs btn-group btn-group-toggle float-right" role="tablist">
+                        <ul class="nav nav-tabs btn-group btn-group-toggle float-right" role="tablist">
                             <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple"
                                     href="#barbiray" aria-controls="home" role="tab" data-toggle="tab">1A</a>
                             </li>
@@ -565,7 +564,7 @@
                             <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#baraltiay"
                                     aria-controls="profile" role="tab" data-toggle="tab">6A</a></li>
                         </ul>
-                    </h6>
+                        </h6>
                 </div>
 
             </div>
@@ -605,7 +604,7 @@
                 </div>
             </div>
         </div>
-       
+
     </div>
     <!-- Tarihsel Volalite -->
     <?php echo "<script>var dataforvolatility = $volatilityforAreaChart;</script>"; ?>
@@ -627,6 +626,26 @@
             </div>
         </div>
 
+    </div>
+
+    {{-- STACKED BAR CHART --}}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="text-left py-1">
+                <h6 class="h5 font-weight-bold text-dark">Senet Oranları</h6>
+            </div>
+        </div>
+
+        <div class="col-xl-9 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area">
+                        <canvas id="stackedBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </div>
@@ -650,5 +669,3 @@
         });
     });
 </script>
-
-
