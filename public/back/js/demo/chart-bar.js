@@ -89,14 +89,8 @@ setTimeout(() => {
         "",
         "Dolaşımdaki Pay Adeti"
     );
-    // newChart(
-    //     myBarChart4,
-    //     dataforchart.slice(0, 365).reverse(),
-    //     Array.from({ length: 365 }, (_, i) => i + 1),
-    //     document.getElementById("myAreaYillikChart")
-    // );
 }, 100);
-console.log(fonPayAdetMonthlyBarChart);
+
 
 var myBarChart1, myBarChart2, myBarChart3, myBarChart4;
 

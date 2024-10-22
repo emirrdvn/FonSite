@@ -3,7 +3,7 @@
     <!-- Ay Gün Butonları -->
 
     <?php
-    echo "<script>var dataforchart = $dataforchart;</script>";
+    
     echo "<script>var fonYatirimciSayisiMonthlyBarChart = $fonYatirimciSayisiMonthlyBarChart;</script>";
     echo "<script>var fonPayAdetMonthlyBarChart = $fonPayAdetMonthlyBarChart;</script>";
     echo "<script>var weightsforchart = $weightsforchart;</script>";

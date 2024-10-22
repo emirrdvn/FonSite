@@ -110,7 +110,7 @@ class FonController extends Controller
             );
         }
 
-        function getDataSixMonthly($fon, $date, $diff, $column,$table)
+        function getDataSixMonthly($fon, $date, $diff, $column, $table)
         {
             return intval(
                 round(
@@ -130,9 +130,9 @@ class FonController extends Controller
                 )
             );
         }
-        
-        
-        
+
+
+
         $fonPayAdetMonthly = [];
         $fonYatirimciSayisiMonthly = [];
         $fonToplamDeger = [];
@@ -158,10 +158,11 @@ class FonController extends Controller
                 'fonprices'
             ));
         }
+        
         $ftdforData = [];
         for ($i = 0; $i < 6; $i++)
             array_push($ftdforData, $fonPayAdetMonthly[$i] * $fonToplamDeger[$i]);
-        
+
         //Fon Farkları
         $fonPriceDiffs = [];
         foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
@@ -172,8 +173,8 @@ class FonController extends Controller
                 $fonPrice
             );
         }
-        
-        
+
+
         $fonVolatility = array();
         DB::table('volatility')->get()->each(function ($item) use (&$fonVolatility) {
             array_push($fonVolatility, $item->volatility);
@@ -185,7 +186,7 @@ class FonController extends Controller
 
         return view('front.homepage', compact(
             'fon',
-            'dataforchart',
+
             'fonPrice',
             'time',
             'fonPayAdet',
