@@ -1,7 +1,7 @@
 @extends('front.layouts.master')
 @section('content')
 <body id="page-top">
-
+  @include('front.widgets.sabitnavbar')
   <!-- Page Wrapper -->
   <div id="wrapper">
 
