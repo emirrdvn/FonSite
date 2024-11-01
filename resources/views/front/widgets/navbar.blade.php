@@ -1,7 +1,7 @@
 
-<nav class="navbar navbar-dark bg-dark" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    <ol class="breadcrumb bg-dark">
-        <li class="breadcrumb-item">
+<nav class="navbar navbar-dark bg-dark pb-5 pt-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+     <ol class="breadcrumb bg-dark">
+        {{-- <li class="breadcrumb-item">
             <svg class="breadcrumb-item-white" width="17px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                 fill="currentColor" aria-hidden="true" class="flex-shrink-0 h-4 w-4 text-foreground-02">
                 <path
@@ -12,8 +12,8 @@
                 </path>
             </svg>
             <a class="text-white" href="#">Ana Sayfa</a>
-        </li>
-        @if ($ReqSeg1 = Request::segment(1))
+        </li> --}}
+        {{-- @if ($ReqSeg1 = Request::segment(1))
             <li class="breadcrumb-item breadcrumb-item-white" aria-current="page">
                 @if ($ReqSeg1 == 'fon')
                 <a class="text-white" href="#">Fonlar</a>
@@ -26,13 +26,13 @@
                         </li>
                     @endif
                 @endif
-        @endif
-    </ol>
+        @endif --}}
+    </ol> 
 </nav>
 
 <!-- Topbar -->
 
-<nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-light bg-dark topbar pb-5  mb-4 static-top shadow">
 
     <div class="d-sm-flex align-items-center  mb-4">
         <div>

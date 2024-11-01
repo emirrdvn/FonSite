@@ -629,7 +629,7 @@
     </div>
 
     {{-- STACKED BAR CHART --}}
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-sm-6">
             <div class="text-left py-1">
                 <h6 class="h5 font-weight-bold text-dark">Senet Oranları</h6>
@@ -646,7 +646,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 </div>
 
