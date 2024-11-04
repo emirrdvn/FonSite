@@ -1,6 +1,6 @@
 @extends('front.layouts.master')
 @section('content')
-<body id="page-top" style="background-color: #f6f7fb">
+<body id="page-top" style="background-color: #000000">
   @include('front.widgets.sabitnavbar')
   @include('front.widgets.docksidebar')
   <!-- Page Wrapper -->
