@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-dark bg-dark pb-5 pt-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+<nav class="navbar navbar-dark bg-dark  pb-5 pt-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
      <ol class="breadcrumb bg-dark">
         {{-- <li class="breadcrumb-item">
             <svg class="breadcrumb-item-white" width="17px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -12,8 +12,8 @@
                 </path>
             </svg>
             <a class="text-white" href="#">Ana Sayfa</a>
-        </li> --}}
-        {{-- @if ($ReqSeg1 = Request::segment(1))
+        </li>
+        @if ($ReqSeg1 = Request::segment(1))
             <li class="breadcrumb-item breadcrumb-item-white" aria-current="page">
                 @if ($ReqSeg1 == 'fon')
                 <a class="text-white" href="#">Fonlar</a>

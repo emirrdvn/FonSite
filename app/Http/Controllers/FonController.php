@@ -14,11 +14,12 @@ use Carbon\Carbon;
 
 class FonController extends Controller
 {
-    public function index($code)
+    public function index(Request $request, $code)
     {
 
         $fon = Fon::where('code', $code)->first();
-
+        $request->session()->put('fon_code', $fon);
+        
         //FON PRICES DYNAMICLY
         $fonprices = array();
         DB::table('fonprices')->where('fon_id', $fon->id)
@@ -183,10 +184,9 @@ class FonController extends Controller
         $volatilityforAreaChart = json_encode($fonVolatility);
         $fonYatirimciSayisiMonthlyBarChart = json_encode($fonYatirimciSayisiMonthly);
         $fonPayAdetMonthlyBarChart = json_encode($fonPayAdetMonthly);
-
+        
         return view('front.homepage', compact(
             'fon',
-
             'fonPrice',
             'time',
             'fonPayAdet',
@@ -207,4 +207,5 @@ class FonController extends Controller
 
         ));
     }
+
 }
