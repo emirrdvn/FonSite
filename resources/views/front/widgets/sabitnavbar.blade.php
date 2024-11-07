@@ -152,7 +152,7 @@
                 @elseif (Request::segment(1) == 'byf')
                     BYF > Analiz
                 @elseif (Request::segment(1) == 'fon')
-                    FON > Analiz
+                    
                     @include('front.widgets.fon')
                     {{-- {{ ['App\Http\Controllers\FonController'::class, showFon()] }} --}}
                     {{-- {{ to_route('fon', ['fon_code' => 'IPB']) }} --}}

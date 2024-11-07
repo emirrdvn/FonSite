@@ -1,8 +1,26 @@
 {{-- SAYFA ARKASI FIXED BOŞLUK --}}
 <nav class="navbar navbar-dark bg-dark  pb-5 pt-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb bg-dark">
-       
-   </ol> 
+        {{-- <span><label for="cars" class="text-white">Fon Seç : </label> 
+        </span>
+        <select name="cars" id="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+        </select> --}}
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{route('fon',['fon_code'=>'IPB'])}}">IPB</a>
+                <a class="dropdown-item" href="{{route('fon',['fon_code'=>'IIH'])}}">IIH</a>
+                
+            </div>
+        </div>
+    </ol>
 </nav>
 
 <!-- Topbar -->
@@ -22,15 +40,19 @@
             </svg>
         </div>
         <div>
-            
-            <h1 class="h2 mb-0 text-white">{{$fon->code}}</h1>
-            <h2 class="h4 mb-1 " style="color: #e3dedeb3">{{$fon->name}}</h2>
+
+            <h1 class="h2 mb-0 text-white">{{ $fon->code }}</h1>
+            <h2 class="h4 mb-1 " style="color: #e3dedeb3">{{ $fon->name }}</h2>
             <div class="container mx-auto px-4 md:px-0 overflow-x-auto overflow-y-hidden">
                 <nav class="flex" aria-label="Tabs">
-                    <a class="whitespace-nowrap text-foreground-02 text-white hover:foreground-01 py-4 px-4 text-sm relative border-b-2 border-transparent hover:border-stroke-02 font-medium hover:text-foreground-01 flex items-center !text-foreground-01 !border-shared-brand-solid-01" href="/fon/{{$fon->code}}">Özet Rapor</a>
-                    <a class="whitespace-nowrap text-foreground-02 text-white hover:foreground-01 py-4 px-4 text-sm relative border-b-2 border-transparent hover:border-stroke-02 font-medium hover:text-foreground-01 flex items-center" href="/fon/{{$fon->code}}/portfoy">Hisse Portföyü</a>
-                    <a class="whitespace-nowrap text-foreground-02 text-white hover:foreground-01 py-4 px-4 text-sm relative border-b-2 border-transparent hover:border-stroke-02 font-medium hover:text-foreground-01 flex items-center" href="/fon/{{$fon->code}}/akis">Akış</a>
-                    <a class="whitespace-nowrap text-foreground-02 text-white hover:foreground-01 py-4 px-4 text-sm relative border-b-2 border-transparent hover:border-stroke-02 font-medium hover:text-foreground-01 flex items-center" href="/fon/{{$fon->code}}/rakip-analizi">Rakip Analizi</a>
+                    <a class="whitespace-nowrap text-foreground-02 text-white hover:foreground-01 py-4 px-4 text-sm relative border-b-2 border-transparent hover:border-stroke-02 font-medium hover:text-foreground-01 flex items-center !text-foreground-01 !border-shared-brand-solid-01"
+                        href="/fon/{{ $fon->code }}">Özet Rapor</a>
+                    <a class="whitespace-nowrap text-foreground-02 text-white hover:foreground-01 py-4 px-4 text-sm relative border-b-2 border-transparent hover:border-stroke-02 font-medium hover:text-foreground-01 flex items-center"
+                        href="/fon/{{ $fon->code }}/portfoy">Hisse Portföyü</a>
+                    <a class="whitespace-nowrap text-foreground-02 text-white hover:foreground-01 py-4 px-4 text-sm relative border-b-2 border-transparent hover:border-stroke-02 font-medium hover:text-foreground-01 flex items-center"
+                        href="/fon/{{ $fon->code }}/akis">Akış</a>
+                    <a class="whitespace-nowrap text-foreground-02 text-white hover:foreground-01 py-4 px-4 text-sm relative border-b-2 border-transparent hover:border-stroke-02 font-medium hover:text-foreground-01 flex items-center"
+                        href="/fon/{{ $fon->code }}/rakip-analizi">Rakip Analizi</a>
                 </nav>
             </div>
         </div>
@@ -39,7 +61,8 @@
         <!-- Nav Item - Alerts -->
         <li class="nav-item  no-arrow mx-1">
             <div>
-                <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">{{ strftime('%e %B %Y', strtotime($time)) }}</div>
+                <div class="text-foreground-03 text-sm  " style="color: #e3dedeb3">
+                    {{ strftime('%e %B %Y', strtotime($time)) }}</div>
                 <div class="text-2xl font-semibold text-white">
                     <span class="inline-flex items-center tabular-nums">{{ $fonPrice }}</span>
                 </div>
@@ -49,9 +72,9 @@
         <!-- Nav Item - Messages -->
         <li class="nav-item  mx-1 show">
             <div class="text-foreground-03 text-sm text-white">1 Aylık Getiri</div>
-                <div class="text-2xl font-semibold " style="color: #e3dedeb3">
-                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiffs['1Month'] }}</span>
-                </div>
+            <div class="text-2xl font-semibold " style="color: #e3dedeb3">
+                <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiffs['1Month'] }}</span>
+            </div>
         </li>
 
         <div class="topbar-divider d-none d-sm-block"></div>
@@ -59,8 +82,8 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <div class="text-foreground-03 text-sm text-white">3 Aylık Getiri</div>
-                <div class="text-2xl font-semibold" style="color: #e3dedeb3">
-                    <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiffs['3Month'] }}</span>
+            <div class="text-2xl font-semibold" style="color: #e3dedeb3">
+                <span class="inline-flex items-center tabular-nums">%{{ $fonPriceDiffs['3Month'] }}</span>
             </div>
         </li>
 
@@ -68,7 +91,7 @@
 
 </nav>
 <!-- End of Topbar -->
-<div id="content" >
+<div id="content">
 
-            
+
     @include('front.widgets.fonbilgi')
