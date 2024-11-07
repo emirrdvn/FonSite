@@ -3,7 +3,7 @@
     * To make Breadcrumb visible
     * --}}
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark pb-1" style="background-color: black!important">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark pb-0" style="background-color: black!important">
 
     {{-- * HAMBURGER MENU ON MOBILE --}}
     <button type="button" class="navbar-toggler collapsed border-dark" data-toggle="collapse" data-target="#main-nav">
@@ -16,7 +16,7 @@
     </a>
     {{-- BREADCRUMB --}}
     <div class="">
-        <ol class="breadcrumb bg-dark " style="background-color: black!important" >
+        <ol class="breadcrumb bg-dark " style="background-color: black!important">
             <li class="breadcrumb-item">
                 <svg class="breadcrumb-item-white" width="17px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                     fill="white" aria-hidden="true" class=" h-4 w-4 text-foreground-02">
@@ -46,69 +46,32 @@
         </ol>
     </div>
     <div id="main-nav" class="collapse navbar-collapse justify-content-center">
-        <ul class="nav w-100">
-            {{-- <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Active</a>
-            </li> --}}
-            <li class="nav-item dropdown border ml-5 mr-2 w-15 ml-0 d-flex ">
-                <a href="#"
-                    class="nav-tabs nav-link  text-white text-center @if (Request::Segment(1) == 'fon') active @endif"
-                    style="background-color: rgba(133, 135, 150, 0.5)!important;" data-toggle="dropdown" role="button"
-                    aria-current="page">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
-                        viewBox="0 0 256 256" class="text-fg-01 opacity-80">
+        <ul class="nav nav-tabs btn-group btn-group-toggle float-left w-100" role="tablist">
+            <li role="presentation" class="active border ml-5 mr-2 w-15 ml-0 d-flex"><a
+                    class="btn btn-sm btn-dark btn-simple active" href="#fonbilgiaa"
+                    style="background-color: rgba(133, 135, 150, 0.5)!important;" aria-controls="home" role="tab"
+                    data-toggle="tab"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                        fill="white" viewBox="0 0 256 256" class="text-fg-01 opacity-80">
                         <path
                             d="M128,24C74.17,24,32,48.6,32,80v96c0,31.4,42.17,56,96,56s96-24.6,96-56V80C224,48.6,181.83,24,128,24Zm80,104c0,9.62-7.88,19.43-21.61,26.92C170.93,163.35,150.19,168,128,168s-42.93-4.65-58.39-13.08C55.88,147.43,48,137.62,48,128V111.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64Zm-21.61,74.92C170.93,211.35,150.19,216,128,216s-42.93-4.65-58.39-13.08C55.88,195.43,48,185.62,48,176V159.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64V176C208,185.62,200.12,195.43,186.39,202.92Z">
                         </path>
                     </svg>
-                    <div  >Fonlar</div>
+                    <div>Günlük</div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-center">
-                    <li>
-                        <a href="{{ route('fon', ['code' => 'IPB']) }}" class="dropdown-item">
-                            IPB
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('fon', ['code' => 'IIH']) }}" class="dropdown-item">
-                            IIH
-                        </a>
-                    </li>
-
-                </ul>
             </li>
-            <li class="nav-item dropdown mx-2 w-15 border d-flex  ">
-                <a href="#" class="nav-tabs nav-link text-dark text-center" data-toggle="dropdown" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
+            <li role="presentation" class="mx-2 w-15 border d-flex"><a class="btn btn-sm btn-dark btn-simple"
+                    href="#Kiyas" aria-controls="profile" role="tab" data-toggle="tab"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
                         class="bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
                         <path
                             d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
                     </svg>
-                    <div class="text-white">Genel</div>
+                    <div class="text-white">Kıyas</div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-center">
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 2.1
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 2.2
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 2.3
-                        </a>
-                    </li>
-
-                </ul>
             </li>
-            <li class="nav-item dropdown mx-2 w-15 border d-flex ">
-                <a href="#" class="nav-tabs nav-link text-dark text-center " data-toggle="dropdown"
-                    role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
+            <li role="presentation" class="mx-2 w-15 border d-flex"><a class="btn btn-sm btn-dark btn-simple"
+                    href="#Analiz" aria-controls="profile" role="tab" data-toggle="tab"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
                         viewBox="0 0 256 256" class="text-fg-01 opacity-50">
                         <path d="M160,128a32,32,0,1,1-32-32A32,32,0,0,1,160,128Z" opacity="0.2"></path>
                         <path
@@ -117,98 +80,107 @@
                     </svg>
                     <div class="text-white">Analiz</div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-center">
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 3.1
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 3.2
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-item">
-                            Sekme 3.3
-                        </a>
-                    </li>
-
-                </ul>
             </li>
 
         </ul>
+
     </div>
 </nav>
-{{-- ESKI FIXED BAR --}}
-{{-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark margin-top flex-end">
-    <a class="navbar-brand" href="#">Fixed navbar</a>
-    <ol class="breadcrumb bg-dark">
-        <li class="breadcrumb-item">
-            <svg class="breadcrumb-item-white" width="17px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                fill="currentColor" aria-hidden="true" class="flex-shrink-0 h-4 w-4 text-foreground-02">
-                <path
-                    d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z">
-                </path>
-                <path
-                    d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z">
-                </path>
-            </svg>
-            <a class="text-white" href="#">Ana Sayfa</a>
-        </li>
-        @if ($ReqSeg1 = Request::segment(1))
-            <li class="breadcrumb-item breadcrumb-item-white" aria-current="page">
-                @if ($ReqSeg1 == 'fon')
-                <a class="text-white" href="#">Fonlar</a>
-                    </li>
-                    @if ($ReqSeg2 = Request::segment(2))
-                        <li class="breadcrumb-item breadcrumb-item-white">
-                            <a href="./{{$fon->code}}" class="text-white">
-                                {{ $ReqSeg2 }}
-                            </a>
-                        </li>
-                    @endif
+<!-- Page Wrapper -->
+<div id="wrapper" style="margin-left: 77px">
+
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column bg-dark-mode">
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active " id="fonbilgiaa">
+                @include('front.widgets.fixedarkasi')
+                @if (Request::segment(1) == 'etf')
+                    ETF > Günlük
+                @elseif (Request::segment(1) == 'byf')
+                    BYF > Günlük
+                @elseif (Request::segment(1) == 'fons')
+                    FON > Günlük
+                @elseif(Request::segment(1) == 'cr')
+                    CR > Günlük
+                @elseif(Request::segment(1) == 'stc')
+                    STC > Günlük
+                @elseif(Request::segment(1) == null)
+                    HOMEPAGE > Günlük
+                @else
+                    {{ Str::upper(Request::path()) }} > Günlük
                 @endif
-        @endif
-    </ol>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-            
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Dropdown link
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
+                
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="Kiyas">
+                {{-- SAYFA ARKASI FIXED BOŞLUK --}}
+                @include('front.widgets.fixedarkasi')
+                Kıyas <br><br><br><br>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vestibulum sit amet risus sed
+                    ultricies. Quisque congue leo ante, efficitur finibus dui lobortis nec. Pellentesque eu enim
+                    eleifend, tristique nisi ac, tempus sapien. Pellentesque habitant morbi tristique senectus et netus
+                    et malesuada fames ac turpis egestas. Vestibulum gravida in velit nec pharetra. Sed ultrices diam
+                    nec justo tincidunt, nec sollicitudin est facilisis. Duis sem nisi, volutpat nec tellus quis,
+                    finibus euismod justo. Nulla luctus elit sed neque luctus, eget scelerisque ex tincidunt. Aliquam
+                    dignissim ante non turpis facilisis, vel finibus enim eleifend. Aliquam interdum felis ex.
+
+                    Aenean porta commodo venenatis. Etiam luctus, velit non efficitur malesuada, elit mauris aliquet
+                    ante, pulvinar lobortis est elit ut mi. Nulla non lacinia nibh. Nunc quis nulla dignissim, interdum
+                    erat sed, lobortis ex. In suscipit euismod feugiat. Mauris vitae metus eu massa molestie ultricies a
+                    sit amet tellus. Nullam vitae commodo lectus. Duis at faucibus dui. Vestibulum ante ipsum primis in
+                    faucibus orci luctus et ultrices posuere cubilia curae; Orci varius natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Morbi luctus libero et faucibus aliquet. Duis luctus
+                    fermentum hendrerit. Mauris condimentum dui ipsum, ac tempor dui placerat vitae. Suspendisse vitae
+                    finibus elit. Vestibulum varius nibh ornare semper fringilla.
+
+                    Sed vel malesuada risus, et hendrerit massa. Suspendisse sed pharetra sapien. Etiam laoreet
+                    malesuada diam in malesuada. Nam fermentum at mauris eget porttitor. Proin consequat semper orci,
+                    nec iaculis elit volutpat eu. Sed egestas sodales pharetra. Nullam pharetra congue neque, ut
+                    consectetur urna venenatis id. Sed ligula magna, consequat a arcu varius, efficitur congue neque.
+                    Aenean sed leo tristique, consectetur elit nec, tincidunt nulla. Pellentesque vehicula, purus ac
+                    feugiat tincidunt, dui quam egestas turpis, nec ornare lacus nisl nec dui. In pellentesque viverra
+                    congue.
+
                 </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Dropdown link
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                    Dropdown link
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-        </ul>
-        
-    </div>
-</nav> --}}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="Analiz">
+                {{-- SAYFA ARKASI FIXED BOŞLUK --}}
+                @if (Request::segment(1) == 'etf')
+                    ETF > Analiz
+                @elseif (Request::segment(1) == 'byf')
+                    BYF > Analiz
+                @elseif (Request::segment(1) == 'fon')
+                    FON > Analiz
+                    @include('front.widgets.fon')
+                    {{-- {{ ['App\Http\Controllers\FonController'::class, showFon()] }} --}}
+                    {{-- {{ to_route('fon', ['fon_code' => 'IPB']) }} --}}
+                    {{-- @include('fon', ['fon_code' => 'IPB']) --}}
+                    {{-- {{ App\Http\Controllers\FonController::showFon('IPB') }} --}}
+                @elseif(Request::segment(1) == 'cr')
+                    CR > Analiz
+                @elseif(Request::segment(1) == 'stc')
+                    STC > Analiz
+                @elseif(Request::segment(1) == null)
+                    HOMEPAGE > Analiz
+                @else
+                    {{ Str::upper(Request::path()) }} > Analiz
+                @endif
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <script>
+            $(document).ready(function() {
+                // Buton grubundaki butonlara tıklama olayı ekle
+                $('#button-group .btn').click(function() {
+                    // Tıklanan butonun ID'sini al (grafik türünü belirtmek için)
+                    var chartType = $(this).attr('id');
+
+                    // Önce mevcut aktif durumu kaldır, sonra tıklanan butonu aktif yap
+                    $('#button-group .btn').removeClass('active');
+                    $(this).addClass('active');
+                });
+            });
+        </script>

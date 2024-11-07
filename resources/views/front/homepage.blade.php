@@ -1,21 +1,8 @@
 @extends('front.layouts.master')
 @section('content')
-<body id="page-top" style="background-color: #000000">
-  @include('front.widgets.sabitnavbar')
-  @include('front.widgets.docksidebar')
-  <!-- Page Wrapper -->
-  <div id="wrapper" style="margin-left: 77px" >
 
-      
-      
-      <!-- Content Wrapper -->
-      <div id="content-wrapper" class="d-flex flex-column bg-dark-mode">
-          @include('front.widgets.navbar')   
-          <!-- Main Content -->
-          <div id="content" >
+    <body id="page-top" style="background-color: #000000">
 
-            
-          @include('front.widgets.fonbilgi')
-      
-@endsection
-
+        @include('front.widgets.docksidebar')
+        @include('front.widgets.sabitnavbar')
+    @endsection

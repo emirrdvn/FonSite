@@ -14,11 +14,12 @@ use Carbon\Carbon;
 
 class FonController extends Controller
 {
-    public function index(Request $request, $code)
+    public function index()
     {
+        $code = request('fon_code') ?? 'IPB';
 
         $fon = Fon::where('code', $code)->first();
-        $request->session()->put('fon_code', $fon);
+        
         
         //FON PRICES DYNAMICLY
         $fonprices = array();
@@ -206,6 +207,22 @@ class FonController extends Controller
             'ftdforBarChartData'
 
         ));
+    }
+
+    public function route2()
+    {
+        // return 'HERE';
+        return view('front.homepage');
+    }
+
+    public function route1()
+    {
+        return view('front.homepage');
+    }
+
+    public function route0()
+    {
+        return view('front.homepage');
     }
 
 }

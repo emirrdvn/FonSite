@@ -23,7 +23,7 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs btn-group btn-group-toggle float-left" role="tablist">
-                <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple" href="#linebirhafta"
+                <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple active" href="#linebirhafta"
                         aria-controls="home" role="tab" data-toggle="tab">7G</a></li>
                 <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiray"
                         aria-controls="profile" role="tab" data-toggle="tab">1A</a></li>

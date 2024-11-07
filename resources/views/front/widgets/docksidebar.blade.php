@@ -25,13 +25,13 @@
             </a>
         </li>
         <li class="li-4">
-            <a href="fons">
+            <a href="fon">
                 <div class="name">Fon</div>
                 <img class="ico" style="width: 47px; height: 47px" src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853a55558a68e192ee08_messages.png" alt="">
             </a>
         </li>
         <li class="li-5">
-            <a href="cr/{{$fon->code}}">
+            <a href="/cr">
                 <div class="name">CR</div>
                 <img class="ico" style="width: 47px; height: 47px" src="https://uploads-ssl.webflow.com/5f7081c044fb7b3321ac260e/5f70853d44d99641ce69afeb_reminders.png" alt="">
             </a>
