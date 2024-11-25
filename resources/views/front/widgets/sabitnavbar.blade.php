@@ -4,16 +4,11 @@
     * --}}
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark pb-0" style="background-color: black!important">
-
-    {{-- * HAMBURGER MENU ON MOBILE --}}
-    <button type="button" class="navbar-toggler collapsed border-dark" data-toggle="collapse" data-target="#main-nav">
-        <span class="menu-icon-bar">
-            <img src="{{ asset('back/') }}/img/hamburger-menu.svg" alt="" height="35">
-        </span>
-    </button>
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <img src="	{{ asset('back/') }}/img/sitelogo.jpg" alt="" height="60" class=" rounded">
     </a>
+
+
     {{-- BREADCRUMB --}}
     <div class="">
         <ol class="breadcrumb bg-dark " style="background-color: black!important">
@@ -83,8 +78,16 @@
             </li>
 
         </ul>
+        {{-- * HAMBURGER MENU ON MOBILE --}}
 
     </div>
+    <div><button type="button" class="navbar-toggler collapsed border-dark" data-toggle="collapse"
+            data-target="#main-nav">
+            <span class="menu-icon-bar">
+                <img src="{{ asset('back/') }}/img/hamburger-menu.png" alt="" height="35">
+            </span>
+        </button></div>
+
 </nav>
 <!-- Page Wrapper -->
 <div id="wrapper" style="margin-left: 77px">
@@ -100,7 +103,8 @@
                     ETF > Günlük
                 @elseif (Request::segment(1) == 'byf')
                     BYF > Günlük
-                @elseif (Request::segment(1) == 'fons')
+                    @include('front.sidebartabs.byf.byf')
+                @elseif (Request::segment(1) == 'fons' )
                     FON > Günlük
                 @elseif(Request::segment(1) == 'cr')
                     CR > Günlük
@@ -111,7 +115,7 @@
                 @else
                     {{ Str::upper(Request::path()) }} > Günlük
                 @endif
-                
+
 
             </div>
             <div role="tabpanel" class="tab-pane" id="Kiyas">
@@ -152,7 +156,6 @@
                 @elseif (Request::segment(1) == 'byf')
                     BYF > Analiz
                 @elseif (Request::segment(1) == 'fon')
-                    
                     @include('front.widgets.fon')
                     {{-- {{ ['App\Http\Controllers\FonController'::class, showFon()] }} --}}
                     {{-- {{ to_route('fon', ['fon_code' => 'IPB']) }} --}}

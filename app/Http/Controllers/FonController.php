@@ -204,7 +204,8 @@ class FonController extends Controller
             'doksangunluk',
             'yillik',
             'ucyillik',
-            'ftdforBarChartData'
+            'ftdforBarChartData',
+            'code'
 
         ));
     }

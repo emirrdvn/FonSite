@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\AjaxController;
 
 Route::get('/fon',[App\Http\Controllers\FonController::class,'index'])->name('fon');
 
@@ -24,4 +25,7 @@ Route::get('/{seg1}', ['App\Http\Controllers\FonController'::class, 'route1'])
 
 Route::get('/', ['App\Http\Controllers\FonController'::class, 'route0'])
     ->name('routeMe0');
+
+
+Route::get('/ajax/current-time', [AjaxController::class, 'getCurrentTime'])->name('ajax.current-time');
 
