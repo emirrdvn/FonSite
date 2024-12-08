@@ -15,10 +15,10 @@ Route::permanentRedirect('/{seg1}/{seg2}/{seg3}', '/{seg1}/{seg2}')
 
 // Route::permanentRedirect('/{seg1}', '/{seg1}/gunluk');
 
-Route::get(
+/*Route::get(
     '/{seg1}/{seg2}',
     ['App\Http\Controllers\FonController'::class, 'route2']
-)->name('routeMe2');
+)->name('routeMe2');*/
 
 Route::get('/{seg1}', ['App\Http\Controllers\FonController'::class, 'route1'])
     ->name('routeMe1');
@@ -27,5 +27,7 @@ Route::get('/', ['App\Http\Controllers\FonController'::class, 'route0'])
     ->name('routeMe0');
 
 
+//Route::get('/ajax/current-time', [AjaxController::class, 'getCurrentTime'])->name('ajax.current-time');
 Route::get('/ajax/current-time', [AjaxController::class, 'getCurrentTime'])->name('ajax.current-time');
+
 

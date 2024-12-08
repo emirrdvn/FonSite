@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('fons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('code', 10)->unique();
+            $table->string('code', 30)->unique();
             $table->string('name', 100);
             $table->longText('description')->nullable();
             $table->string('author', 100)->nullable();

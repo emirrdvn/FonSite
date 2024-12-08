@@ -97,7 +97,7 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column bg-dark-mode">
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active " id="fonbilgiaa">
+            <div role="tabpanel" class="tab-pane @if (request('tab') == 'fonbilgiaa') active @endif " id="fonbilgiaa">
                 @include('front.widgets.fixedarkasi')
                 @if (Request::segment(1) == 'etf')
                     ETF > Günlük
@@ -118,7 +118,7 @@
 
 
             </div>
-            <div role="tabpanel" class="tab-pane" id="Kiyas">
+            <div role="tabpanel" class="tab-pane @if (request('tab') == 'Kiyas') active @endif" id="Kiyas">
                 {{-- SAYFA ARKASI FIXED BOŞLUK --}}
                 @include('front.widgets.fixedarkasi')
                 Kıyas <br><br><br><br>
@@ -149,7 +149,7 @@
 
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="Analiz">
+            <div role="tabpanel" class="tab-pane @if (request('tab') == 'Analiz') active @endif" id="Analiz">
                 {{-- SAYFA ARKASI FIXED BOŞLUK --}}
                 @if (Request::segment(1) == 'etf')
                     ETF > Analiz

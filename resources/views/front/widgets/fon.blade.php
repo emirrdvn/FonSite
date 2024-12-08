@@ -9,7 +9,7 @@
             <option value="mercedes">Mercedes</option>
             <option value="audi">Audi</option>
         </select> --}}
-        <div class="dropdown">
+        {{--<div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 {{ $fon->code }}
@@ -17,9 +17,26 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="{{route('fon',['fon_code'=>'IPB'])}}">IPB</a>
                 <a class="dropdown-item" href="{{route('fon',['fon_code'=>'IIH'])}}">IIH</a>
+                <a class="dropdown-item" href="{{route('fon',['fon_code'=>'BIST:ZGOLD'])}}">ZGOLD</a>
+                <a class="dropdown-item" href="{{route('fon',['fon_code'=>'BIST:ZPX30'])}}">ZPX30</a>
+                <a class="dropdown-item" href="{{route('fon',['fon_code'=>'BIST:ZPLIB'])}}">ZPLIB</a>
                 
             </div>
+
+        </div>--}}
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Fon Seçiniz
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @foreach (App\Models\Fon::all() as $f)
+                    <a class="dropdown-item" href="{{ route('fon', ['tab' => 'Analiz', 'fon_code' => $f->code]) }}">
+                        {{ $f->code }} : {{ $f->name }}
+                    </a>
+                @endforeach
+            </div>
         </div>
+                <br>
     </ol>
 </nav>
 

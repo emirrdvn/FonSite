@@ -16,6 +16,7 @@ class FonController extends Controller
 {
     public function index()
     {
+        
         $code = request('fon_code') ?? 'IPB';
 
         $fon = Fon::where('code', $code)->first();
@@ -185,6 +186,8 @@ class FonController extends Controller
         $volatilityforAreaChart = json_encode($fonVolatility);
         $fonYatirimciSayisiMonthlyBarChart = json_encode($fonYatirimciSayisiMonthly);
         $fonPayAdetMonthlyBarChart = json_encode($fonPayAdetMonthly);
+
+        
         
         return view('front.homepage', compact(
             'fon',
