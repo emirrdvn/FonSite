@@ -105,7 +105,7 @@ Bu proje, **TradingView** platformundan **BIST fonlarını** scrape ederek çeki
 ## Teknolojiler
 - **Backend**: Laravel PHP Framework
 - **Frontend**: Blade Template Engine, Bootstrap
-- **Scraper**: Python (BeautifulSoup, Requests)
+- **Scraper**: Python (TvDataFeed)
 - **Veritabanı**: MySQL
 - **Diğer**: TradingView scraping için özel algoritmalar
 
