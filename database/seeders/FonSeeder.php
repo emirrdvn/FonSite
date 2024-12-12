@@ -13,7 +13,7 @@ class FonSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('fons')->insert([
+        /*DB::table('fons')->insert([
             'code' => 'IPB',
             'name' => 'Birinci Değişken Fon',
             'description' => 'Fon yatırım stratejisi çerçevesinde sabit bir varlık dağılımı hedefi olmayıp değişken piyasa koşullarına göre esnek olarak yönetilmesi esasına dayanır. Fon yönetiminde yatırım yapılacak sermaye piyasası araçlarının seçiminde, getiri potansiyeli yüksek, likit varlıklar tercih edilir. Fon, olumsuz piyasa şartlarının hakim olduğu dönemlerde yatırımcıyı piyasa kayıplarından korumak amaçlı, fon portföyünde bulunan hisse senedi ağırlığını vadeli işlem sözleşmelerinde alacağı ters pozisyonlarla -%30 a (eksi yüzde otuz) çekebilir. Fon, iyimser piyasa koşullarının hakim olduğu dönemlerde portföyündeki yatırım amaçlı hisse senedi ağırlığını vadeli işlemler sözleşmelerini kullanarak +%60 a (artı yüzde altmış) çekebilir',
@@ -51,5 +51,121 @@ class FonSeeder extends Seeder
             'name' => 'Alphabet Inc (Google) Class C',
             'description' => 'Alphabet, Inc is a holding company, which engages in the business of acquisition and operation of different companies. It operates through the Google and Other Bets segments. The Google segment includes its main Internet products such as ads, Android, Chrome, hardware, Google Cloud, Google Maps, Google Play, Search, and YouTube. The Other Bets segment consists of businesses such as Access, Calico, CapitalG, GV, Verily, Waymo, and X. The company was founded by Lawrence E. Page and Sergey Mikhaylovich Brin on October 2, 2015 and is headquartered in Mountain View, CA. ',
             'author' => 'Google',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:ALTIN',
+            'name' => 'DARPHANE ALTIN SERTİFİKASI',
+            'description' => 'Altın Fiyatlari ',
+            'author' => 'Türkiye Cumhuriyeti Darphanesi',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:ISGLK',
+            'name' => 'IS PORTFOY ALTIN KATILIM BYF',
+            'description' => 'Katılım Fonu ',
+            'author' => 'İş Bankası',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:ZELOT',
+            'name' => 'ZİRAAT PORTFÖY BIST 50-30 ENDEKSİ HİSSE SENEDİ YOĞUN BORSA YATIRIM FONU',
+            'description' => 'Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+        
+        DB::table('fons')->insert([
+            'code' => 'BIST:Z30EA',
+            'name' => 'ZIRAAT PORTFOY BIST 30 EQUAL WEIGHTED ETF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+        
+        DB::table('fons')->insert([
+            'code' => 'BIST:Z30KP',
+            'name' => 'ZİRAAT PORTFÖY KATILIM 30 ENDEKSİ HİSSE SENEDİ YOĞUN BORSA YATIRIM FONU',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:Z30KE',
+            'name' => 'ZIRAAT PORTFOY KATILIM 30 EA HSY BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:ZPBDL',
+            'name' => 'ZIRAAT PORTFOY BIST NON-BANK LIQUID 10 INDEX FUND',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:ZRE20',
+            'name' => 'ZİRAAT PORTFÖY RİSK EŞİT BANKA DIŞI 20 ENDEKSİ HSY BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:ZPT10',
+            'name' => 'ZİRAAT PORTFÖY YILDIZ PAZAR TEKNOLOJİ VE İLETİŞİM 10 ENDEKSİ HİSSE SENEDİ ',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:ZTM25',
+            'name' => 'ZIRAAT PORTFOY BIST TEMETTU 25 ENDEKS HSY BYF ',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+        
+        DB::table('fons')->insert([
+            'code' => 'BIST:ZSR25',
+            'name' => 'ZİRAAT PORTFÖY BIST SÜRDÜRÜLEBİLİRLİK 25 ENDEKSİ HİSSE SENEDİ ',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'ZİRAAT PORTFÖY YÖNETİMİ ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:GMSTR',
+            'name' => 'QNB FİNANS PORTFÖY GÜMÜŞ BYF ',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'Government of Qatar  ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:USDTR',
+            'name' => 'QNB FİNANS PORTFÖY AMERİKAN DOLARI YABANC BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'Government of Qatar  ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:QTEMZ',
+            'name' => 'QNB PORTFOY TEMIZ ENERJI HSY BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'Government of Qatar  ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:APX30',
+            'name' => 'AK PORTFOY BIST 30 ENDEKSI HSY BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'Akbank TAS ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:OPX30',
+            'name' => 'OSMANLI PORTFOY BIST 30 HSY BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'OSMANLI PORTFÖY YÖNETİM ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:APLIB',
+            'name' => 'AK PORTFOY BIST LIKIT BANKA HSY BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'Akbank TAS ',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:APBDL',
+            'name' => 'AK PORTFOY BIST BANKA DISI LIKIT 10 HSY BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'Akbank TAS',]);
+
+        DB::table('fons')->insert([
+            'code' => 'BIST:GLDTR',
+            'name' => 'QNB FİNANS PORTFÖY ALTIN BYF',
+            'description' => 'Bist Katılım Fonu ',
+            'author' => 'Government of Qatar',]);*/
+
+        
     }
 }

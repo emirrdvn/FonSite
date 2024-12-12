@@ -118,18 +118,31 @@ function getLast30Days() {
     return daysArray.reverse();
 }
 
+function generateSequentialAndReverseList(count) {
+    
+    const sequential = [];
+    for (let i = 1; i <= count; i++) {
+        sequential.push(i);
+    }
+
+    const reverse = [...sequential].reverse(); // Listeyi ters çevirme
+
+    return reverse;
+}
+
 // Area Chart Example
 
 
 
 
-newChart(myLineChart1,yedigunluk.reverse(), getLast7DaysLabels(),document.getElementById("myAreaChart"));
-newChart(myLineChart2,otuzgunluk.reverse(), getLast30Days(),document.getElementById("myAreaAylikChart"));
-newChart(myLineChart3,doksangunluk.reverse(), getLast90Days(),document.getElementById("myAreaUcAylikChart"));
-newChart(myLineChart4,yillik.reverse(), Array.from({ length: 365 }, (_, i) => i + 1),document.getElementById("myAreaYillikChart"));
-newChart(myLineChart5,ucyillik.reverse(), Array.from({ length: 365 * 3 }, (_, i) => i + 1),document.getElementById("myAreaUcYillikChart"));
+newChart(myLineChart1,dataforchart5m, generateSequentialAndReverseList(20),document.getElementById("myAreaBesDakikaChart"));
+newChart(myLineChart2,dataforchart30m, generateSequentialAndReverseList(20),document.getElementById("myAreaYarimSaatlikChart"));
+newChart(myLineChart3,dataforchart1h, generateSequentialAndReverseList(20),document.getElementById("myAreaSaatlikChart"));
+newChart(myLineChart4,dataforchart1d, generateSequentialAndReverseList(20),document.getElementById("myAreaGunlukChart"));
+newChart(myLineChart5,dataforchart1wk,generateSequentialAndReverseList(20) ,document.getElementById("myAreaHaftalikChart"));
+newChart(myLineChart5,dataforchart1mo,generateSequentialAndReverseList(20) ,document.getElementById("myAreaAylikChart"));
 
- 
+ /*Array.from({ length: 365 * 3 }, (_, i) => i + 1)*/
 
 
 var myLineChart1, myLineChart2, myLineChart3, myLineChart4,myLineChart5;
@@ -148,13 +161,13 @@ async function newChart(chart,useThisData, LabelData,ctx) {
                     lineTension: 0.3,
                     backgroundColor: "rgba(0, 0, 0, 0.07)",
                     borderColor: "rgba(0, 0, 0, 1)",
-                    pointRadius: 3,
+                    pointRadius: 1.5,
                     pointBackgroundColor: "rgba(0, 0, 0, 1)",
                     pointBorderColor: "rgba(0, 0, 0, 1)",
                     pointHoverRadius: 3,
                     pointHoverBackgroundColor: "rgba(255, 255, 255, 1)",
                     pointHoverBorderColor: "rgba(255, 255, 255, 0.5)",
-                    pointHitRadius: 5,
+                    pointHitRadius: 3,
                     pointBorderWidth: 2,
                     data: useThisData,
                 },

@@ -7,13 +7,14 @@
     echo "<script>var fonYatirimciSayisiMonthlyBarChart = $fonYatirimciSayisiMonthlyBarChart;</script>";
     echo "<script>var fonPayAdetMonthlyBarChart = $fonPayAdetMonthlyBarChart;</script>";
     echo "<script>var weightsforchart = $weightsforchart;</script>";
-    echo "<script>var yedigunluk = $yedigunluk;</script>";
-    echo "<script>var otuzgunluk = $otuzgunluk;</script>";
-    echo "<script>var doksangunluk = $doksangunluk;</script>";
-    echo "<script>var yillik = $yillik;</script>";
-    echo "<script>var ucyillik = $ucyillik;</script>";
     echo "<script>var volatilityforAreaChart = $volatilityforAreaChart;</script>";
     echo "<script>var ftdforBarChartData = $ftdforBarChartData;</script>";
+    echo "<script>var dataforchart5m = $dataforchart5m;</script>";
+    echo "<script>var dataforchart30m = $dataforchart30m;</script>";
+    echo "<script>var dataforchart1h = $dataforchart1h;</script>";
+    echo "<script>var dataforchart1d = $dataforchart1d;</script>";
+    echo "<script>var dataforchart1wk = $dataforchart1wk;</script>";
+    echo "<script>var dataforchart1mo = $dataforchart1mo;</script>";
     
     ?>
 
@@ -23,31 +24,73 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs btn-group btn-group-toggle float-left" role="tablist">
-                <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple active" href="#linebirhafta"
-                        aria-controls="home" role="tab" data-toggle="tab">7G</a></li>
-                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiray"
-                        aria-controls="profile" role="tab" data-toggle="tab">1A</a></li>
-                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineucay"
-                        aria-controls="profile" role="tab" data-toggle="tab">3A</a></li>
-                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linebiryil"
-                        aria-controls="profile" role="tab" data-toggle="tab">1Y</a></li>
-                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineucyil"
-                        aria-controls="profile" role="tab" data-toggle="tab">3Y</a></li>
+                <li role="presentation" class="active"><a class="btn btn-sm btn-dark btn-simple active" href="#linebesdakika"
+                        aria-controls="home" role="tab" data-toggle="tab">5M</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineyarimsaatlik"
+                        aria-controls="profile" role="tab" data-toggle="tab">30M</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linesaatlik"
+                        aria-controls="profile" role="tab" data-toggle="tab">1H</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linegunluk"
+                        aria-controls="profile" role="tab" data-toggle="tab">1D</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#linehaftalik"
+                        aria-controls="profile" role="tab" data-toggle="tab">1WK</a></li>
+                <li role="presentation"><a class="btn btn-sm btn-dark btn-simple" href="#lineaylik"
+                        aria-controls="profile" role="tab" data-toggle="tab">1MO</a></li>
             </ul>
         </div>
         <!-- Tab panes -->
-        <div class="tab-content col-xl-9 col-lg-7">
-            <div role="tabpanel" class="tab-pane active " id="linebirhafta">
+        <div class="tab-content col-xl-12 ">
+            <div role="tabpanel" class="tab-pane active " id="linebesdakika">
                 <div class="card shadow mb-4">
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="myAreaChart"></canvas>
+                            <canvas id="myAreaBesDakikaChart"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="linebiray">
+            <div role="tabpanel" class="tab-pane" id="lineyarimsaatlik">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaYarimSaatlikChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="linesaatlik">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaSaatlikChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="linegunluk">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaGunlukChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="linehaftalik">
+                <div class="card shadow mb-4">
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="myAreaHaftalikChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="lineaylik">
                 <div class="card shadow mb-4">
                     <!-- Card Body -->
                     <div class="card-body">
@@ -57,44 +100,19 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="lineucay">
-                <div class="card shadow mb-4">
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="myAreaUcAylikChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="linebiryil">
-                <div class="card shadow mb-4">
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="myAreaYillikChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="lineucyil">
-                <div class="card shadow mb-4">
-                    <!-- Card Body -->
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="myAreaUcYillikChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
 
 
 
 
+        
+    </div>
+
+    <!-- İKİNCİ SIRA,ROW -->
+    <div class="row">
         {{-- FON BİLGİLERİ --}}
-        <div class="col-xl-3 col-lg-5">
+        <div class="col-xl-4 col-lg-6">
             <!-- Approach -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -159,11 +177,8 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- FON TOPLAM DEĞER -->
-    <div class="row">
-        <div class="col-lg-3 col-md-4">
+        <!-- FON TOPLAM DEĞER -->
+        <div class="col-xl-4 col-lg-6">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h5 class="m-0 font-weight-bold text-dark">Fon Toplam Değer</h6>
@@ -178,7 +193,7 @@
             </div>
         </div>
         {{-- YATIRIMCI SAYISI --}}
-        <div class="col-lg-3 col-md-4">
+        {{--<div class="col-lg-3 col-md-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h5 class="m-0 font-weight-bold text-dark">Yatırımcı Sayısı</h6>
@@ -191,7 +206,7 @@
                 </div>
             </div>
         </div>
-        {{-- DOLAŞIMDAKİ PAY ADETİ --}}
+        {{-- DOLAŞIMDAKİ PAY ADETİ 
         <div class="col-lg-3 col-md-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -204,9 +219,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--}}
 
-        {{-- HACİM BİLGİLERİ  --}}
+        {{-- HACİM BİLGİLERİ  
         <div class="col-xl-3 col-lg-5">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -234,6 +249,7 @@
                 </div>
             </div>
         </div>
+        --}}
     </div>
 
     {{-- ŞİRKETLER STATİK --}}

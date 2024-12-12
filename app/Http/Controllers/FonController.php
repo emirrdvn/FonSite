@@ -16,20 +16,80 @@ class FonController extends Controller
 {
     public function index()
     {
-        
-        $code = request('fon_code') ?? 'IPB';
+
+        $code = request('fon_code') ?? 'BIST:ZGOLD';
 
         $fon = Fon::where('code', $code)->first();
-        
-        
+        $fonTemp=Fon::where('code', 'IPB')->first();
+
+        $tableNameD = "data_{$code}_1d";
         //FON PRICES DYNAMICLY
         $fonprices = array();
-        DB::table('fonprices')->where('fon_id', $fon->id)
-            ->orderBy('date', 'desc')
-            ->get()->each(function ($item) use (&$fonprices) {
-                array_push($fonprices, $item->price);
+        DB::table($tableNameD)
+            ->orderBy('datetime', 'desc')->take(20)
+            ->get()->reverse()->each(function ($item) use (&$fonprices) {
+                array_push($fonprices, $item->open);
             });
-        $dataforchart = json_encode($fonprices);
+        
+        //5Minutes
+        $fonprice5m = array();
+        $tablename5m = "data_{$code}_5m";
+        DB::table($tablename5m)
+            ->orderBy('datetime', 'desc')->take(20)
+            ->get()->reverse()->each(function ($item) use (&$fonprice5m) {
+                array_push($fonprice5m, $item->open);
+            });
+        //30Minutes
+        $fonprice30m = array();
+        $tablename30m = "data_{$code}_30m";
+        DB::table($tablename30m)
+            ->orderBy('datetime', 'desc')->take(20)
+            ->get()->reverse()->each(function ($item) use (&$fonprice30m) {
+                array_push($fonprice30m, $item->open);
+            });
+        //1Hour
+        $fonprice1h = array();
+        $tablename1h = "data_{$code}_1h";
+        DB::table($tablename1h)
+            ->orderBy('datetime', 'desc')->take(20)
+            ->get()->reverse()->each(function ($item) use (&$fonprice1h) {
+                array_push($fonprice1h, $item->open);
+            });
+        //1Week
+        $fonprice1wk = array();
+        $tablename1wk = "data_{$code}_1wk";
+        DB::table($tablename1wk)
+            ->orderBy('datetime', 'desc')->take(20)
+            ->get()->reverse()->each(function ($item) use (&$fonprice1wk) {
+                array_push($fonprice1wk, $item->open);
+            });
+        //1Month
+        $fonprice1mo = array();
+        $tablename1mo = "data_{$code}_1mo";
+        DB::table($tablename1mo)
+            ->orderBy('datetime', 'desc')->take(20)
+            ->get()->reverse()->each(function ($item) use (&$fonprice1mo) {
+                array_push($fonprice1mo, $item->open);
+            });
+        
+        $dataforchart5m = json_encode($fonprice5m);
+        $dataforchart1d=json_encode($fonprices);
+        $dataforchart30m=json_encode($fonprice30m);
+        $dataforchart1h=json_encode($fonprice1h);
+        $dataforchart1wk=json_encode($fonprice1wk);
+        $dataforchart1mo=json_encode($fonprice1mo);
+
+        
+
+
+
+
+
+
+
+
+
+
 
         //PARA WEIGHTS
         $weights = array();
@@ -47,37 +107,33 @@ class FonController extends Controller
 
         $weightsforchart = json_encode($distribution);
 
-        $yedigunluk = json_encode(array_slice($fonprices, 0, 7));
-        $otuzgunluk = json_encode(array_slice($fonprices, 0, 30));
-        $doksangunluk = json_encode(array_slice($fonprices, 0, 90));
-        $yillik = json_encode(array_slice($fonprices, 0, 365));
-        $ucyillik = json_encode(array_slice($fonprices, 0, 365 * 3));
+        
 
         //sonradan eklendi
 
-        $fonPriceLast = DB::table('fonprices')
-            ->where('fon_id', $fon->id)
-            ->orderByDesc('date')
+        $fonPriceLast = DB::table($tableNameD)
+            ->orderByDesc('datetime')
             ->first();
-        $fonPrice = $fonPriceLast->price;
+        $fonPrice = $fonPriceLast->close;
 
 
 
         $fonPayAdet = DB::table('payAdet')
-            ->where('fon_id', $fon->id)
+            /*->where('fon_id', $fon->id)*/
             ->orderByDesc('date')
             ->first()
             ->payAdet;
 
         $fonYatirimciSayisi = DB::table('yatirimciSayisi')
-            ->where('fon_id', $fon->id)
+            /*->where('fon_id', $fon->id)*/
             ->orderByDesc('date')
             ->first()
             ->yatirimciSayisi;
 
-        $time = new DateTime($fonPriceLast->date);
+        $time = new DateTime($fonPriceLast->datetime);
+        
         $time = $time->format('Y-m-d');
-
+        $time ="2024-10-13";
         function getFonPriceDiff($fon, $date, $diff, $fonPrice)
         {
             $fonPriceOld = DB::table('fonprices')
@@ -94,6 +150,7 @@ class FonController extends Controller
 
         function getDataMonthly($fon, $date, $diff, $column)
         {
+            
             return intval(
                 round(
                     DB::table($column)
@@ -141,27 +198,27 @@ class FonController extends Controller
         $fonToplamDeger = [];
         for ($i = 6; $i > 0; $i--) {
             array_push($fonPayAdetMonthly, getDataMonthly(
-                $fon,
+                $fonTemp,
                 $time,
                 '-' . $i . ' month',
                 'payAdet'
             ));
 
             array_push($fonYatirimciSayisiMonthly, getDataMonthly(
-                $fon,
+                $fonTemp,
                 $time,
                 '-' . $i . ' month',
                 'yatirimciSayisi'
             ));
             array_push($fonToplamDeger, getDataSixMonthly(
-                $fon,
+                $fonTemp,
                 $time,
                 '-' . $i . ' month',
                 'price',
                 'fonprices'
             ));
         }
-        
+
         $ftdforData = [];
         for ($i = 0; $i < 6; $i++)
             array_push($ftdforData, $fonPayAdetMonthly[$i] * $fonToplamDeger[$i]);
@@ -170,7 +227,7 @@ class FonController extends Controller
         $fonPriceDiffs = [];
         foreach (['1Month', '3Month', '6Month', '1Year', '3Year', '5Year'] as $diff) {
             $fonPriceDiffs[$diff] = getFonPriceDiff(
-                $fon,
+                $fonTemp,
                 $time,
                 '-' . substr($diff, 0, 1) . ' ' . strtolower(substr($diff, 1)),
                 $fonPrice
@@ -187,8 +244,8 @@ class FonController extends Controller
         $fonYatirimciSayisiMonthlyBarChart = json_encode($fonYatirimciSayisiMonthly);
         $fonPayAdetMonthlyBarChart = json_encode($fonPayAdetMonthly);
 
-        
-        
+
+
         return view('front.homepage', compact(
             'fon',
             'fonPrice',
@@ -202,13 +259,15 @@ class FonController extends Controller
             'fonPayAdetMonthlyBarChart',
             'weightsforchart',
             'volatilityforAreaChart',
-            'yedigunluk',
-            'otuzgunluk',
-            'doksangunluk',
-            'yillik',
-            'ucyillik',
             'ftdforBarChartData',
-            'code'
+            'code',
+            'dataforchart5m',
+            'dataforchart30m',
+            'dataforchart1h',
+            'dataforchart1d',
+            'dataforchart1wk',
+            'dataforchart1mo',
+
 
         ));
     }
@@ -228,5 +287,4 @@ class FonController extends Controller
     {
         return view('front.homepage');
     }
-
 }
